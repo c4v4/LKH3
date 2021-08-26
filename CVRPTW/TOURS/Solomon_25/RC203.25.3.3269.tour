@@ -1,0 +1,36 @@
+NAME : RC203.3269.tour
+COMMENT : Cost = 0_3269
+COMMENT : Found by LKH [Keld Helsgaun] Wed Sep 13 18:32:23 2017
+TYPE : TOUR
+DIMENSION : 28
+TOUR_SECTION
+1
+12
+16
+10
+11
+14
+17
+18
+15
+13
+27
+21
+20
+19
+22
+24
+23
+26
+25
+28
+3
+7
+8
+9
+5
+6
+4
+2
+-1
+EOF

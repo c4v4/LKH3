@@ -1,0 +1,40 @@
+#!/bin/bash
+# Usage: ./run_ACVRP class name max_trials runs [ optimum ]
+
+if [ -z "$3" ]; then
+    echo "./run_ACVRP class name max_trials runs [ optimum ]"
+    exit
+fi
+
+lkh="../LKH"
+class=$1
+name=$2
+max_trials=$3
+runs=$4
+optimum=$5
+par=TMP/$name.pid$$.par
+
+mkdir -p TOURS
+mkdir -p TOURS/$class
+mkdir -p TMP
+
+echo "SPECIAL" > $par
+echo "PROBLEM_FILE = INSTANCES/$class/$name.vrp" >> $par
+arr=(${name//-k/ })
+salesmen=${arr[1]}
+if [ -n "$salesmen" ]; then
+    echo "SALESMEN = $salesmen" >> $par
+fi
+
+echo "MAX_TRIALS = $max_trials" >> $par
+echo "RUNS = $runs" >> $par
+# echo "TOUR_FILE = TOURS/$class/$name.$.tour" >> $par
+echo "TRACE_LEVEL = 0" >> $par
+
+if [ -n "$optimum" ]; then
+    echo "OPTIMUM = $optimum" >> $par
+fi
+
+$lkh $par
+
+/bin/rm -f $par

@@ -1,0 +1,39 @@
+NAME : S-U-6-1.2029.tour
+COMMENT : Length = 2029
+COMMENT : Found by LKH [Keld Helsgaun] Thu May 17 23:18:22 2018
+TYPE : TOUR
+DIMENSION : 31
+TOUR_SECTION
+1
+10
+7
+3
+15
+8
+18
+23
+24
+17
+21
+4
+12
+2
+5
+13
+30
+29
+19
+22
+26
+28
+27
+25
+31
+9
+14
+16
+11
+6
+20
+-1
+EOF

@@ -1,0 +1,39 @@
+NAME : S-G-100-10.2253.tour
+COMMENT : Length = 2253
+COMMENT : Found by LKH [Keld Helsgaun] Thu May 17 23:18:19 2018
+TYPE : TOUR
+DIMENSION : 31
+TOUR_SECTION
+1
+20
+26
+29
+4
+15
+12
+17
+16
+10
+13
+25
+30
+7
+14
+2
+19
+18
+11
+6
+8
+22
+5
+9
+3
+24
+31
+23
+28
+21
+27
+-1
+EOF

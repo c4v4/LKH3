@@ -1,0 +1,39 @@
+NAME : S-G-100-12.3030.tour
+COMMENT : Length = 3030
+COMMENT : Found by LKH [Keld Helsgaun] Thu May 17 23:18:19 2018
+TYPE : TOUR
+DIMENSION : 31
+TOUR_SECTION
+1
+11
+8
+14
+30
+10
+12
+5
+29
+27
+21
+23
+26
+22
+2
+3
+6
+28
+31
+13
+7
+4
+20
+24
+18
+25
+19
+17
+16
+9
+15
+-1
+EOF

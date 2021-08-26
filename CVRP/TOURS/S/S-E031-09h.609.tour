@@ -1,0 +1,47 @@
+NAME : E031-09h.609.tour
+COMMENT : Cost = 0_609
+COMMENT : Found by LKH [Keld Helsgaun] Wed Sep 13 12:57:50 2017
+TYPE : TOUR
+DIMENSION : 39
+TOUR_SECTION
+1
+4
+19
+26
+10
+37
+15
+12
+36
+7
+3
+31
+33
+5
+9
+8
+38
+27
+11
+13
+32
+6
+21
+16
+28
+34
+24
+2
+23
+29
+35
+20
+14
+30
+22
+39
+18
+25
+17
+-1
+EOF

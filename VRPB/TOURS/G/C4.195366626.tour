@@ -1,0 +1,52 @@
+NAME : C4.195366626.tour
+COMMENT : Cost = 0_195366626
+COMMENT : Found by LKH [Keld Helsgaun] Sun Sep 10 07:53:50 2017
+TYPE : TOUR
+DIMENSION : 44
+TOUR_SECTION
+1
+27
+29
+39
+40
+34
+2
+12
+15
+17
+6
+18
+42
+30
+25
+37
+20
+4
+9
+5
+44
+23
+28
+38
+32
+41
+24
+36
+3
+21
+10
+7
+43
+22
+33
+35
+26
+31
+14
+19
+13
+8
+11
+16
+-1
+EOF

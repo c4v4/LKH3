@@ -1,0 +1,58 @@
+NAME : A-n45-k6.944.tour
+COMMENT : Cost = 0_944
+COMMENT : Found by LKH [Keld Helsgaun] Wed Sep 13 11:33:01 2017
+TYPE : TOUR
+DIMENSION : 50
+TOUR_SECTION
+1
+13
+40
+37
+43
+5
+17
+23
+10
+47
+24
+29
+8
+14
+44
+30
+48
+4
+11
+9
+42
+34
+22
+6
+21
+33
+46
+2
+7
+25
+38
+28
+27
+49
+45
+35
+20
+31
+41
+12
+18
+19
+50
+15
+36
+32
+39
+3
+26
+16
+-1
+EOF

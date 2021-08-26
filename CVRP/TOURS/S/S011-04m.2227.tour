@@ -1,0 +1,22 @@
+NAME : S011-04m.2227.tour
+COMMENT : Cost = 0_2227
+COMMENT : Found by LKH [Keld Helsgaun] Sun May  7 02:47:20 2017
+TYPE : TOUR
+DIMENSION : 14
+TOUR_SECTION
+1
+9
+6
+12
+11
+7
+13
+5
+2
+4
+3
+14
+8
+10
+-1
+EOF

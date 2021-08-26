@@ -1,0 +1,22 @@
+run_CVRP Kytojoki 33 10000 10 75743790 # Improved from 75754.55
+run_CVRP Kytojoki 34 10000 10 114568310 # Improved from 114579.08
+run_CVRP Kytojoki 35 10000 10 192217370 # Improved from 192228.14
+run_CVRP Kytojoki 36 10000 10 231041890 # Improved from 231052.66
+run_CVRP Kytojoki 37 10000 10 269866430 # Improved from 269877.20
+run_CVRP Kytojoki 38 10000 10 308690950 # Improved from 308702.92
+run_CVRP Kytojoki 39 10000 10 347516668 # Improved from 347537.00
+run_CVRP Kytojoki 40 10000 10 386340010 # Improved from 386350.77
+run_CVRP Kytojoki 41 10000 10 425165728 # Improved from 425175.30
+run_CVRP Kytojoki 42 10000 10 463989054 # Improved from 463999.83
+run_CVRP Kytojoki 43 10000 10 541638110 # Improved from 541648.89
+run_CVRP Kytojoki 44 10000 10 645173784 # Improved from 645180.95
+
+run_CVRP Kytojoki W 10000 10 4125953 # Improved from 4246802
+run_CVRP Kytojoki E 10000 10 4468028 # Improved from: 4567080
+run_CVRP Kytojoki S 10000 10 3030929 # Improved from 3206350
+run_CVRP Kytojoki M 10000 10 2963820 # Improved from 3038828
+
+run_CVRP Kytojoki R3 10000 10 182766 # Improved from 182808
+run_CVRP Kytojoki R6 10000 10 347065 # Improved from 347533
+run_CVRP Kytojoki R9 10000 10 511460 # Improved from 512054
+run_CVRP Kytojoki R12 10000 10 672182 # Improved from 673260

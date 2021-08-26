@@ -1,0 +1,48 @@
+NAME : A036-05f.2110.tour
+COMMENT : Cost = 0_2110
+COMMENT : Found by LKH [Keld Helsgaun] Tue Sep 12 09:34:14 2017
+TYPE : TOUR
+DIMENSION : 40
+TOUR_SECTION
+1
+14
+12
+15
+16
+17
+27
+2
+36
+31
+24
+28
+29
+30
+32
+38
+3
+4
+13
+6
+8
+7
+33
+37
+26
+25
+20
+21
+22
+23
+40
+5
+35
+9
+10
+11
+34
+19
+18
+39
+-1
+EOF

@@ -1,0 +1,33 @@
+NAME : E022-04g.375.tour
+COMMENT : Cost = 0_375
+COMMENT : Found by LKH [Keld Helsgaun] Wed Sep 13 12:57:49 2017
+TYPE : TOUR
+DIMENSION : 25
+TOUR_SECTION
+1
+10
+8
+6
+3
+2
+7
+25
+14
+12
+5
+4
+9
+11
+23
+17
+20
+22
+15
+24
+13
+16
+19
+21
+18
+-1
+EOF

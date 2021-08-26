@@ -1,0 +1,39 @@
+NAME : S-G-200-18.1969.tour
+COMMENT : Length = 1969
+COMMENT : Found by LKH [Keld Helsgaun] Thu May 17 23:18:21 2018
+TYPE : TOUR
+DIMENSION : 31
+TOUR_SECTION
+1
+10
+12
+16
+15
+7
+13
+17
+26
+19
+20
+18
+30
+29
+28
+24
+21
+23
+31
+9
+2
+3
+14
+22
+27
+25
+4
+8
+11
+6
+5
+-1
+EOF

@@ -1,0 +1,39 @@
+NAME : cvrp-A-U-4-17.825.tour
+COMMENT : Length = 825
+COMMENT : Found by LKH [Keld Helsgaun] Thu May 17 22:42:37 2018
+TYPE : TOUR
+DIMENSION : 31
+TOUR_SECTION
+1
+24
+17
+14
+3
+7
+12
+30
+18
+19
+25
+22
+31
+26
+28
+23
+10
+9
+11
+4
+27
+13
+8
+16
+20
+6
+15
+5
+2
+21
+29
+-1
+EOF

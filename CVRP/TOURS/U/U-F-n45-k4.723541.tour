@@ -1,0 +1,56 @@
+NAME : U-F-n45-k4.723541.tour
+COMMENT : Cost = 0_723541
+COMMENT : Found by LKH [Keld Helsgaun] Wed Sep 13 14:31:02 2017
+TYPE : TOUR
+DIMENSION : 48
+TOUR_SECTION
+1
+25
+17
+3
+2
+16
+10
+46
+44
+45
+29
+34
+30
+28
+7
+6
+8
+36
+4
+5
+15
+14
+13
+12
+19
+18
+11
+47
+9
+20
+23
+24
+27
+26
+21
+22
+48
+38
+39
+37
+40
+41
+35
+32
+33
+31
+42
+43
+-1
+EOF

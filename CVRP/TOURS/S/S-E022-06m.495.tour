@@ -1,0 +1,35 @@
+NAME : E022-06m.495.tour
+COMMENT : Cost = 0_495
+COMMENT : Found by LKH [Keld Helsgaun] Wed Sep 13 12:57:49 2017
+TYPE : TOUR
+DIMENSION : 27
+TOUR_SECTION
+1
+13
+10
+6
+26
+15
+22
+20
+27
+17
+14
+24
+12
+5
+4
+11
+25
+16
+8
+3
+2
+7
+9
+23
+18
+21
+19
+-1
+EOF

@@ -1,0 +1,20 @@
+run_CVRP Golden Golden_1 10000 10 5623479 # 5623.47
+run_CVRP Golden Golden_2 10000 10 8404618 # My best: 8412111 # 8404.61
+run_CVRP Golden Golden_3 10000 10 11036230 # 11036.22
+run_CVRP Golden Golden_4 10000 10 13590005 # My best: 13624546 # 13590.00
+run_CVRP Golden Golden_5 10000 10 6460980 # 6460.98
+run_CVRP Golden Golden_6 10000 10 8400335 # My best: 8404272 # 8400.33
+run_CVRP Golden Golden_7 10000 10 10102685 # My best: 10109167 # 10102.68
+run_CVRP Golden Golden_8 10000 10 11635327 # 11635.34
+run_CVRP Golden Golden_9 10000 10 579715 # My best: 580331 # 579.71
+run_CVRP Golden Golden_10 10000 10 735665 # My best: 739097 # 735.60
+run_CVRP Golden Golden_11 10000 10 912035 # My best: 915926 # 912.03
+run_CVRP Golden Golden_12 10000 10 1101505 # My best: 1107047 # 1101.50
+run_CVRP Golden Golden_13 10000 10 857195 # My best: 858803 # 857.19
+run_CVRP Golden Golden_14 10000 10 1080544 # 1080.55
+run_CVRP Golden Golden_15 10000 10 1337875 # My best: 1342724 # 1337.87
+run_CVRP Golden Golden_16 10000 10 1611565 # My best: 1618735 # 1611.56
+run_CVRP Golden Golden_17 10000 10 707740 # 707.76
+run_CVRP Golden Golden_18 10000 10 995126 # 995.13
+run_CVRP Golden Golden_19 10000 10 1365605 # My best: 1365648 # 1365.60
+run_CVRP Golden Golden_20 10000 10 1817595 # My best: 1819227 # 1817.59

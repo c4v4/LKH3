@@ -1,0 +1,34 @@
+NAME : R208.3282.tour
+COMMENT : Length = 3282
+COMMENT : Found by LKH [Keld Helsgaun] Wed Sep 13 18:32:21 2017
+TYPE : TOUR
+DIMENSION : 26
+TOUR_SECTION
+1
+13
+24
+23
+16
+15
+17
+18
+6
+19
+9
+8
+20
+12
+11
+2
+21
+10
+4
+25
+26
+5
+22
+3
+14
+7
+-1
+EOF

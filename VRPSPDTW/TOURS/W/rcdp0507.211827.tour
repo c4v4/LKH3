@@ -1,0 +1,15 @@
+NAME : rcdp0507.211827.tour
+COMMENT : Cost = 0_211827
+COMMENT : Found by LKH [Keld Helsgaun] Thu Sep 14 16:08:52 2017
+TYPE : TOUR
+DIMENSION : 7
+TOUR_SECTION
+1
+6
+4
+7
+2
+3
+5
+-1
+EOF

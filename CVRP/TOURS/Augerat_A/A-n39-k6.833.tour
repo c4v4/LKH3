@@ -1,0 +1,52 @@
+NAME : A-n39-k6.833.tour
+COMMENT : Cost = 0_833
+COMMENT : Found by LKH [Keld Helsgaun] Thu Nov  2 15:32:24 2017
+TYPE : TOUR
+DIMENSION : 44
+TOUR_SECTION
+1
+25
+30
+29
+10
+6
+42
+33
+11
+17
+28
+35
+23
+19
+22
+43
+4
+13
+39
+38
+32
+36
+26
+15
+40
+27
+12
+37
+18
+24
+2
+7
+41
+14
+16
+44
+21
+8
+9
+5
+20
+34
+3
+31
+-1
+EOF

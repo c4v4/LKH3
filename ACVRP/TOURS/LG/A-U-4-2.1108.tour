@@ -1,0 +1,39 @@
+NAME : cvrp-A-U-4-2.1108.tour
+COMMENT : Length = 1108
+COMMENT : Found by LKH [Keld Helsgaun] Thu May 17 22:42:36 2018
+TYPE : TOUR
+DIMENSION : 31
+TOUR_SECTION
+1
+28
+29
+9
+15
+14
+4
+24
+22
+30
+21
+18
+17
+23
+25
+3
+5
+16
+31
+20
+12
+7
+2
+8
+27
+26
+11
+6
+10
+13
+19
+-1
+EOF

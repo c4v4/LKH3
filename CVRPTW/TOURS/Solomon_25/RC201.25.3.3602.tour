@@ -1,0 +1,36 @@
+NAME : RC201.3602.tour
+COMMENT : Cost = 0_3602
+COMMENT : Found by LKH [Keld Helsgaun] Wed Sep 13 18:32:23 2017
+TYPE : TOUR
+DIMENSION : 28
+TOUR_SECTION
+1
+24
+22
+19
+20
+23
+21
+25
+26
+27
+15
+13
+17
+16
+12
+10
+11
+14
+18
+28
+3
+6
+9
+8
+7
+4
+2
+5
+-1
+EOF

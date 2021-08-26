@@ -1,0 +1,39 @@
+NAME : S-U-4-9.2214.tour
+COMMENT : Length = 2214
+COMMENT : Found by LKH [Keld Helsgaun] Thu May 17 23:18:22 2018
+TYPE : TOUR
+DIMENSION : 31
+TOUR_SECTION
+1
+30
+13
+10
+14
+7
+18
+11
+15
+5
+12
+24
+21
+4
+2
+6
+16
+19
+29
+26
+31
+23
+27
+28
+25
+20
+17
+9
+8
+3
+22
+-1
+EOF

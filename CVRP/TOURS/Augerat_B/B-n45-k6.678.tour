@@ -1,0 +1,58 @@
+NAME : B-n45-k6.678.tour
+COMMENT : Cost = 0_678
+COMMENT : Found by LKH [Keld Helsgaun] Wed Sep 13 11:36:58 2017
+TYPE : TOUR
+DIMENSION : 50
+TOUR_SECTION
+1
+30
+35
+19
+7
+27
+26
+17
+46
+6
+31
+43
+14
+44
+47
+45
+34
+41
+10
+4
+16
+8
+21
+50
+5
+28
+20
+38
+24
+33
+29
+9
+23
+40
+48
+25
+18
+15
+3
+37
+11
+12
+2
+49
+13
+42
+32
+22
+39
+36
+-1
+EOF

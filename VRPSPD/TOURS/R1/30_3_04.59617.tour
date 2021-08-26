@@ -1,0 +1,41 @@
+NAME : 30_3_04.59617.tour
+COMMENT : Cost = 0_59617
+COMMENT : Found by LKH [Keld Helsgaun] Thu Sep 14 11:07:27 2017
+TYPE : TOUR
+DIMENSION : 33
+TOUR_SECTION
+1
+23
+12
+11
+13
+14
+7
+8
+5
+22
+25
+10
+28
+27
+2
+32
+15
+18
+4
+33
+9
+30
+17
+6
+16
+24
+19
+31
+21
+20
+29
+26
+3
+-1
+EOF

@@ -1,0 +1,45 @@
+NAME : E033-05s.904547.tour
+COMMENT : Length = 904547
+COMMENT : Found by LKH [Keld Helsgaun] Tue May  8 13:50:36 2018
+TYPE : TOUR
+DIMENSION : 37
+TOUR_SECTION
+1
+5
+34
+2
+16
+18
+26
+25
+24
+23
+21
+22
+20
+19
+14
+35
+3
+13
+12
+33
+11
+10
+9
+8
+7
+6
+4
+37
+27
+28
+17
+29
+30
+36
+31
+15
+32
+-1
+EOF

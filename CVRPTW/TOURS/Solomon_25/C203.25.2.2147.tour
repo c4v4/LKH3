@@ -1,0 +1,35 @@
+NAME : C203.2147.tour
+COMMENT : Cost = 0_2147
+COMMENT : Found by LKH [Keld Helsgaun] Wed Sep 13 18:32:22 2017
+TYPE : TOUR
+DIMENSION : 27
+TOUR_SECTION
+1
+21
+23
+25
+7
+24
+19
+20
+17
+15
+13
+16
+18
+14
+26
+10
+12
+11
+9
+22
+27
+5
+4
+8
+2
+3
+6
+-1
+EOF

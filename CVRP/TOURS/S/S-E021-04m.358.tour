@@ -1,0 +1,32 @@
+NAME : E021-04m.358.tour
+COMMENT : Cost = 0_358
+COMMENT : Found by LKH [Keld Helsgaun] Wed Sep 13 12:57:49 2017
+TYPE : TOUR
+DIMENSION : 24
+TOUR_SECTION
+1
+5
+16
+4
+10
+8
+23
+18
+9
+3
+22
+2
+7
+20
+12
+21
+6
+24
+15
+14
+17
+19
+11
+13
+-1
+EOF

@@ -1,0 +1,36 @@
+NAME : C104.1869.tour
+COMMENT : Cost = 0_1869
+COMMENT : Found by LKH [Keld Helsgaun] Wed Sep 13 18:32:21 2017
+TYPE : TOUR
+DIMENSION : 28
+TOUR_SECTION
+1
+14
+18
+19
+20
+16
+17
+15
+13
+11
+27
+21
+25
+26
+24
+23
+22
+28
+8
+9
+12
+10
+7
+5
+3
+2
+4
+6
+-1
+EOF

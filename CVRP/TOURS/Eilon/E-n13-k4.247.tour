@@ -1,0 +1,24 @@
+NAME : eil13.247.tour
+COMMENT : Length = 247
+COMMENT : Found by LKH [Keld Helsgaun] Sat Nov 25 21:08:18 2017
+TYPE : TOUR
+DIMENSION : 16
+TOUR_SECTION
+1
+2
+16
+12
+5
+8
+3
+14
+9
+6
+4
+15
+7
+11
+13
+10
+-1
+EOF

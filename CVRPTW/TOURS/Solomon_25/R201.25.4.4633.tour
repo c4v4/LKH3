@@ -1,0 +1,37 @@
+NAME : R201.4633.tour
+COMMENT : Cost = 0_4633
+COMMENT : Found by LKH [Keld Helsgaun] Wed Sep 13 18:32:20 2017
+TYPE : TOUR
+DIMENSION : 29
+TOUR_SECTION
+1
+22
+24
+23
+5
+26
+25
+27
+3
+16
+15
+17
+18
+14
+29
+6
+20
+12
+8
+9
+19
+7
+28
+13
+10
+4
+21
+11
+2
+-1
+EOF

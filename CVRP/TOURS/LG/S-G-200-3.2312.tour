@@ -1,0 +1,39 @@
+NAME : S-G-200-3.2312.tour
+COMMENT : Length = 2312
+COMMENT : Found by LKH [Keld Helsgaun] Thu May 17 23:18:21 2018
+TYPE : TOUR
+DIMENSION : 31
+TOUR_SECTION
+1
+16
+2
+6
+7
+19
+5
+8
+12
+13
+11
+14
+21
+25
+23
+20
+22
+24
+18
+17
+27
+29
+28
+3
+10
+4
+9
+15
+30
+31
+26
+-1
+EOF

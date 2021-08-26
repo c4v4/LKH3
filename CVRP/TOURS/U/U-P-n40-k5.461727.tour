@@ -1,0 +1,52 @@
+NAME : U-P-n40-k5.vrp.461727.tour
+COMMENT : Cost = 0_461727
+COMMENT : Found by LKH [Keld Helsgaun] Wed Sep 13 14:35:12 2017
+TYPE : TOUR
+DIMENSION : 44
+TOUR_SECTION
+1
+2
+23
+29
+4
+37
+36
+21
+3
+33
+42
+6
+11
+40
+34
+16
+38
+18
+13
+41
+39
+10
+31
+35
+22
+30
+17
+12
+43
+7
+25
+24
+8
+27
+32
+9
+28
+44
+19
+5
+20
+14
+26
+15
+-1
+EOF

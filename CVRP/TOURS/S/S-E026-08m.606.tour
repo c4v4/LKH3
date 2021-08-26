@@ -1,0 +1,41 @@
+NAME : E026-08m.606.tour
+COMMENT : Cost = 0_606
+COMMENT : Found by LKH [Keld Helsgaun] Wed Sep 13 12:57:49 2017
+TYPE : TOUR
+DIMENSION : 33
+TOUR_SECTION
+1
+4
+28
+21
+22
+14
+17
+30
+23
+19
+25
+29
+8
+6
+18
+31
+3
+5
+26
+11
+33
+13
+12
+9
+10
+32
+20
+16
+27
+24
+2
+7
+15
+-1
+EOF

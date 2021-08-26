@@ -1,0 +1,38 @@
+NAME : P-n23-k8.529.tour
+COMMENT : Cost = 0_529
+COMMENT : Found by LKH [Keld Helsgaun] Wed Sep 13 11:52:33 2017
+TYPE : TOUR
+DIMENSION : 30
+TOUR_SECTION
+1
+19
+20
+4
+25
+9
+17
+27
+2
+3
+30
+12
+16
+13
+11
+29
+14
+10
+18
+26
+5
+8
+28
+7
+21
+22
+24
+6
+15
+23
+-1
+EOF

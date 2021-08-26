@@ -1,0 +1,39 @@
+NAME : S-U-4-7.2178.tour
+COMMENT : Length = 2178
+COMMENT : Found by LKH [Keld Helsgaun] Thu May 17 23:18:22 2018
+TYPE : TOUR
+DIMENSION : 31
+TOUR_SECTION
+1
+27
+18
+28
+17
+5
+13
+16
+3
+19
+6
+9
+15
+25
+11
+2
+14
+12
+23
+26
+22
+24
+30
+10
+4
+7
+8
+31
+21
+29
+20
+-1
+EOF

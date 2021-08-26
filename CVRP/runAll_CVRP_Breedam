@@ -1,0 +1,8 @@
+run_CVRP Breedam Bre-1 10000 10 1106
+run_CVRP Breedam Bre-2 10000 10 1506
+run_CVRP Breedam Bre-4 10000 10 1470
+run_CVRP Breedam Bre-5 10000 10 950
+run_CVRP Breedam Bre-6 10000 10 969
+run_CVRP Breedam Bre-9 10000 10 1690
+run_CVRP Breedam Bre-10 10000 10 1026
+run_CVRP Breedam Bre-11 10000 10 1124

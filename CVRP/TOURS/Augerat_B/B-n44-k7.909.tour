@@ -1,0 +1,58 @@
+NAME : B-n44-k7.909.tour
+COMMENT : Cost = 0_909
+COMMENT : Found by LKH [Keld Helsgaun] Wed Sep 13 11:36:55 2017
+TYPE : TOUR
+DIMENSION : 50
+TOUR_SECTION
+1
+10
+27
+25
+40
+15
+37
+3
+18
+6
+47
+30
+17
+8
+45
+20
+14
+42
+38
+35
+22
+7
+46
+5
+9
+43
+31
+23
+39
+33
+48
+19
+12
+24
+11
+49
+41
+2
+13
+4
+29
+26
+50
+21
+36
+28
+32
+44
+34
+16
+-1
+EOF

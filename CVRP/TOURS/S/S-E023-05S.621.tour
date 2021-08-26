@@ -1,0 +1,35 @@
+NAME : E023-05s.621.tour
+COMMENT : Cost = 0_621
+COMMENT : Found by LKH [Keld Helsgaun] Wed Sep 13 12:57:49 2017
+TYPE : TOUR
+DIMENSION : 27
+TOUR_SECTION
+1
+12
+24
+13
+25
+8
+10
+9
+6
+5
+22
+27
+7
+2
+3
+4
+17
+16
+15
+18
+23
+21
+20
+19
+26
+11
+14
+-1
+EOF

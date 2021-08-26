@@ -1,0 +1,28 @@
+NAME : P-n19-k2.212.tour
+COMMENT : Cost = 0_212
+COMMENT : Found by LKH [Keld Helsgaun] Wed Sep 13 11:52:33 2017
+TYPE : TOUR
+DIMENSION : 20
+TOUR_SECTION
+1
+2
+11
+3
+8
+10
+16
+14
+6
+19
+20
+7
+9
+17
+18
+4
+13
+15
+12
+5
+-1
+EOF

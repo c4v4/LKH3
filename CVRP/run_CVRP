@@ -1,0 +1,88 @@
+#!/bin/bash
+# Usage: ./run_CVRP class name max_trials runs [ optimum ]
+
+if [ -z "$3" ]; then
+    echo "./run_CVRP class name max_trials runs [ optimum ]"
+    exit
+fi
+
+lkh="../LKH"
+class=$1
+name=$2
+max_trials=$3
+runs=$4
+optimum=$5
+par=TMP/$name.pid$$.par
+
+mkdir -p TOURS
+mkdir -p TOURS/$class
+mkdir -p TMP
+# mkdir -p SOLUTIONS
+# mkdir -p SOLUTIONS/$class
+
+echo "SPECIAL" > $par
+echo "PROBLEM_FILE = INSTANCES/$class/$name.vrp" >> $par
+# arr=(${name//-k/ })
+# vehicles=${arr[1]}
+# if [ -n "$vehicles" ]; then
+#    echo "VEHICLES = $vehicles" >> $par
+# fi
+
+if false; then
+    for FILE in `ls TOURS/$class/$name.*.tour | sort -n -t . -k2,3` ;
+    do
+        echo "INITIAL_TOUR_FILE = $FILE" >> $par
+        break
+    done
+fi
+
+if false; then
+    max_merge_tours=10
+    merge_tours=0
+    for FILE in `ls TOURS/$class/$name.*.tour | sort -n -t . -k2,3` ;
+    do
+         let "merge_tours++"
+         if [ $merge_tours -gt $max_merge_tours ]; then
+             break
+         fi
+         echo "MERGE_TOUR_FILE = $FILE" >> $par
+    done
+    echo "MAX_CANDIDATES = 0" >> $par
+fi
+
+echo "MAX_TRIALS = $max_trials" >> $par
+echo "RUNS = $runs" >> $par
+# echo "TOUR_FILE = TOURS/$class/$name.$.tour" >> $par
+# echo "SINTEF_SOLUTION_FILE = SOLUTIONS/$class/$name.$.sol" >> $par
+echo "TRACE_LEVEL = 1" >> $par
+echo "SEED = 0" >> $par
+
+if false; then
+    for FILE in `ls TOURS/$class/$name.*.tour | sort -n -t . -k2,3` ;
+    do
+    	echo "INITIAL_TOUR_FILE = $FILE" >> $par
+      	break
+    done
+fi
+
+if false; then
+    max_merge_tours=10
+    merge_tours=0
+    for FILE in `ls TOURS/$class/$name.*.tour | sort -n -t . -k2,3` ;
+    do
+         let "merge_tours++"
+         if [ $merge_tours -gt $max_merge_tours ]; then
+             break
+         fi
+         echo "MERGE_TOUR_FILE = $FILE" >> $par
+    done 
+    echo "MAX_CANDIDATES = 0" >> $par
+fi
+
+if [ -n "$optimum" ]; then
+    echo "OPTIMUM = $optimum" >> $par
+fi
+
+$lkh $par
+
+/bin/rm -f $par

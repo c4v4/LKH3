@@ -1,0 +1,36 @@
+NAME : fri26.1353.tour
+COMMENT : Cost = 0_1353
+COMMENT : Found by LKH [Keld Helsgaun] Sun May  7 01:01:53 2017
+TYPE : TOUR
+DIMENSION : 28
+TOUR_SECTION
+1
+12
+13
+11
+16
+8
+7
+9
+10
+14
+15
+28
+3
+5
+6
+4
+2
+27
+19
+20
+18
+17
+21
+22
+26
+23
+24
+25
+-1
+EOF

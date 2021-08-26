@@ -1,0 +1,39 @@
+NAME : S-U-6-3.2312.tour
+COMMENT : Length = 2312
+COMMENT : Found by LKH [Keld Helsgaun] Thu May 17 23:18:23 2018
+TYPE : TOUR
+DIMENSION : 31
+TOUR_SECTION
+1
+26
+27
+17
+18
+24
+22
+20
+23
+7
+6
+2
+16
+30
+29
+15
+9
+4
+10
+3
+28
+14
+11
+13
+12
+8
+5
+19
+21
+31
+25
+-1
+EOF

@@ -1,0 +1,39 @@
+NAME : S-U-8-3.2163.tour
+COMMENT : Length = 2163
+COMMENT : Found by LKH [Keld Helsgaun] Thu May 17 23:18:23 2018
+TYPE : TOUR
+DIMENSION : 31
+TOUR_SECTION
+1
+5
+8
+12
+13
+11
+14
+16
+28
+18
+24
+22
+20
+17
+23
+21
+19
+2
+6
+7
+15
+9
+4
+10
+3
+27
+29
+26
+30
+25
+31
+-1
+EOF

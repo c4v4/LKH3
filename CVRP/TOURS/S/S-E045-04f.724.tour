@@ -1,0 +1,56 @@
+NAME : E045-04f.724.tour
+COMMENT : Cost = 0_724
+COMMENT : Found by LKH [Keld Helsgaun] Wed Sep 13 12:57:51 2017
+TYPE : TOUR
+DIMENSION : 48
+TOUR_SECTION
+1
+11
+18
+19
+12
+13
+14
+15
+5
+4
+36
+8
+6
+7
+28
+30
+34
+29
+45
+44
+47
+43
+42
+31
+32
+33
+35
+41
+40
+37
+39
+38
+46
+9
+20
+23
+24
+27
+26
+21
+22
+48
+17
+3
+2
+16
+10
+25
+-1
+EOF

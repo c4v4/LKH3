@@ -1,0 +1,33 @@
+NAME : U-E-n22-k4.375282.tour
+COMMENT : Cost = 0_375282
+COMMENT : Found by LKH [Keld Helsgaun] Wed Sep 13 14:28:56 2017
+TYPE : TOUR
+DIMENSION : 25
+TOUR_SECTION
+1
+7
+2
+3
+6
+8
+10
+24
+11
+9
+4
+5
+12
+14
+25
+18
+21
+19
+16
+13
+23
+17
+20
+22
+15
+-1
+EOF

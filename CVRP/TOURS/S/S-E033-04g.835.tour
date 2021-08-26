@@ -1,0 +1,44 @@
+NAME : E033-04g.835.tour
+COMMENT : Cost = 0_835
+COMMENT : Found by LKH [Keld Helsgaun] Wed Sep 13 12:57:50 2017
+TYPE : TOUR
+DIMENSION : 36
+TOUR_SECTION
+1
+3
+13
+12
+33
+9
+10
+8
+5
+35
+31
+15
+32
+34
+4
+6
+7
+11
+19
+20
+22
+21
+23
+24
+25
+26
+18
+14
+36
+2
+16
+27
+28
+29
+17
+30
+-1
+EOF

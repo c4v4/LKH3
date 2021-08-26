@@ -1,0 +1,45 @@
+NAME : S031-07w.1205.tour
+COMMENT : Cost = 0_1205
+COMMENT : Found by LKH [Keld Helsgaun] Sun May  7 02:47:20 2017
+TYPE : TOUR
+DIMENSION : 37
+TOUR_SECTION
+1
+20
+9
+26
+21
+35
+5
+30
+24
+36
+31
+22
+33
+15
+28
+11
+19
+32
+18
+2
+3
+37
+13
+27
+10
+8
+16
+17
+12
+14
+34
+25
+4
+29
+7
+6
+23
+-1
+EOF

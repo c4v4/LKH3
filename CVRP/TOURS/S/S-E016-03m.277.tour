@@ -1,0 +1,26 @@
+NAME : E016-03m.277.tour
+COMMENT : Cost = 0_277
+COMMENT : Found by LKH [Keld Helsgaun] Wed Sep 13 12:57:48 2017
+TYPE : TOUR
+DIMENSION : 18
+TOUR_SECTION
+1
+6
+5
+14
+15
+7
+17
+3
+4
+9
+8
+18
+2
+12
+10
+11
+16
+13
+-1
+EOF

@@ -1,0 +1,33 @@
+NAME : ulysses22.tsp.9291.tour
+COMMENT : Cost = 0_9291
+COMMENT : Found by LKH [Keld Helsgaun] Sun May  7 01:01:53 2017
+TYPE : TOUR
+DIMENSION : 25
+TOUR_SECTION
+1
+8
+14
+13
+25
+12
+6
+7
+20
+21
+16
+23
+3
+2
+17
+4
+18
+22
+24
+19
+10
+9
+11
+5
+15
+-1
+EOF

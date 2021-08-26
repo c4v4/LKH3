@@ -1,0 +1,33 @@
+NAME : E022-04g.375282.tour
+COMMENT : Length = 375282
+COMMENT : Found by LKH [Keld Helsgaun] Tue May  8 13:50:36 2018
+TYPE : TOUR
+DIMENSION : 25
+TOUR_SECTION
+1
+10
+8
+6
+3
+2
+7
+23
+18
+21
+19
+16
+13
+24
+11
+9
+4
+5
+12
+14
+25
+15
+22
+20
+17
+-1
+EOF

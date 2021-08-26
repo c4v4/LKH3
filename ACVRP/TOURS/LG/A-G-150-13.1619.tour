@@ -1,0 +1,39 @@
+NAME : cvrp-A-G-150-13.1619.tour
+COMMENT : Length = 1619
+COMMENT : Found by LKH [Keld Helsgaun] Thu May 17 22:42:35 2018
+TYPE : TOUR
+DIMENSION : 31
+TOUR_SECTION
+1
+28
+7
+11
+2
+9
+16
+20
+21
+26
+17
+23
+6
+3
+4
+8
+5
+24
+30
+29
+27
+19
+18
+14
+10
+15
+12
+13
+25
+22
+31
+-1
+EOF

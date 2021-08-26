@@ -1,0 +1,39 @@
+NAME : S-G-200-6.2028.tour
+COMMENT : Length = 2028
+COMMENT : Found by LKH [Keld Helsgaun] Thu May 17 23:18:21 2018
+TYPE : TOUR
+DIMENSION : 31
+TOUR_SECTION
+1
+20
+18
+19
+22
+31
+28
+23
+10
+7
+6
+14
+5
+15
+29
+3
+11
+8
+9
+13
+16
+12
+25
+30
+2
+4
+26
+17
+21
+24
+27
+-1
+EOF

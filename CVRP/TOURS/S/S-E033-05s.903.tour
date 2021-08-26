@@ -1,0 +1,45 @@
+NAME : E033-05s.903.tour
+COMMENT : Cost = 0_903
+COMMENT : Found by LKH [Keld Helsgaun] Wed Sep 13 12:57:50 2017
+TYPE : TOUR
+DIMENSION : 37
+TOUR_SECTION
+1
+2
+16
+18
+26
+25
+24
+21
+22
+23
+20
+19
+14
+34
+3
+13
+12
+33
+11
+10
+9
+8
+7
+6
+4
+37
+32
+15
+31
+35
+5
+36
+30
+29
+17
+28
+27
+-1
+EOF

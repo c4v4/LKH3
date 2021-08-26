@@ -1,0 +1,40 @@
+NAME : eil30.66.537.tour
+COMMENT : Length = 537
+COMMENT : Found by LKH [Keld Helsgaun] Tue Dec 11 00:02:39 2018
+TYPE : TOUR
+DIMENSION : 32
+TOUR_SECTION
+1
+21
+5
+2
+6
+3
+23
+32
+24
+11
+12
+9
+15
+18
+8
+14
+17
+16
+13
+10
+22
+19
+31
+20
+27
+29
+30
+26
+28
+25
+7
+4
+-1
+EOF

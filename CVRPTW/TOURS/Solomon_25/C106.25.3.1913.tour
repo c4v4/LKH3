@@ -1,0 +1,36 @@
+NAME : C106.1913.tour
+COMMENT : Cost = 0_1913
+COMMENT : Found by LKH [Keld Helsgaun] Wed Sep 13 18:32:21 2017
+TYPE : TOUR
+DIMENSION : 28
+TOUR_SECTION
+1
+6
+4
+8
+9
+11
+12
+10
+7
+5
+3
+2
+28
+14
+18
+19
+20
+16
+17
+15
+13
+27
+21
+25
+26
+24
+23
+22
+-1
+EOF

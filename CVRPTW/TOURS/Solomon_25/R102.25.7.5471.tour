@@ -1,0 +1,40 @@
+NAME : R102.5471.tour
+COMMENT : Cost = 0_5471
+COMMENT : Found by LKH [Keld Helsgaun] Wed Sep 13 18:31:38 2017
+TYPE : TOUR
+DIMENSION : 32
+TOUR_SECTION
+1
+4
+10
+21
+2
+30
+19
+29
+9
+18
+6
+28
+22
+24
+25
+13
+32
+8
+12
+20
+11
+31
+15
+17
+7
+14
+27
+3
+16
+23
+5
+26
+-1
+EOF

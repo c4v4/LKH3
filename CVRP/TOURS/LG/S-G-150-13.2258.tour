@@ -1,0 +1,39 @@
+NAME : S-G-150-13.2258.tour
+COMMENT : Length = 2258
+COMMENT : Found by LKH [Keld Helsgaun] Thu May 17 23:18:20 2018
+TYPE : TOUR
+DIMENSION : 31
+TOUR_SECTION
+1
+25
+19
+4
+6
+27
+14
+15
+11
+2
+17
+28
+23
+3
+16
+5
+13
+7
+26
+8
+10
+12
+9
+29
+31
+21
+22
+30
+24
+18
+20
+-1
+EOF

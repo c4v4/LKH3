@@ -1,0 +1,16 @@
+NAME : S007-02a.114.tour
+COMMENT : Cost = 0_114
+COMMENT : Found by LKH [Keld Helsgaun] Sun May  7 02:47:20 2017
+TYPE : TOUR
+DIMENSION : 8
+TOUR_SECTION
+1
+4
+3
+2
+8
+5
+6
+7
+-1
+EOF

@@ -1,0 +1,46 @@
+NAME : A036-03f.1644.tour
+COMMENT : Cost = 0_1644
+COMMENT : Found by LKH [Keld Helsgaun] Tue Sep 12 09:33:45 2017
+TYPE : TOUR
+DIMENSION : 38
+TOUR_SECTION
+1
+27
+26
+25
+20
+34
+19
+18
+11
+10
+35
+9
+14
+2
+36
+3
+4
+17
+16
+15
+12
+13
+6
+8
+7
+5
+38
+33
+31
+28
+24
+21
+22
+23
+29
+30
+32
+37
+-1
+EOF

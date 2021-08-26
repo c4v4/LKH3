@@ -1,0 +1,37 @@
+NAME : RC101.4611.tour
+COMMENT : Cost = 0_4611
+COMMENT : Found by LKH [Keld Helsgaun] Wed Sep 13 18:32:22 2017
+TYPE : TOUR
+DIMENSION : 29
+TOUR_SECTION
+1
+12
+23
+21
+29
+3
+6
+8
+7
+9
+4
+2
+5
+27
+24
+22
+20
+19
+26
+25
+28
+15
+13
+16
+17
+10
+11
+14
+18
+-1
+EOF

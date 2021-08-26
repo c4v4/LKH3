@@ -1,0 +1,40 @@
+NAME : E-n30-k3.534.tour
+COMMENT : Cost = 0_534
+COMMENT : Found by LKH [Keld Helsgaun] Wed Sep 13 12:21:01 2017
+TYPE : TOUR
+DIMENSION : 32
+TOUR_SECTION
+1
+21
+4
+5
+2
+6
+3
+23
+32
+20
+16
+17
+14
+8
+18
+10
+15
+9
+13
+12
+11
+24
+19
+31
+27
+29
+28
+30
+26
+25
+7
+22
+-1
+EOF

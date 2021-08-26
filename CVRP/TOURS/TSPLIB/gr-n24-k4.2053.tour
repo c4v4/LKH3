@@ -1,0 +1,35 @@
+NAME : gr24.2053.tour
+COMMENT : Cost = 0_2053
+COMMENT : Found by LKH [Keld Helsgaun] Sun May  7 01:01:53 2017
+TYPE : TOUR
+DIMENSION : 27
+TOUR_SECTION
+1
+16
+11
+3
+21
+8
+7
+6
+25
+12
+4
+26
+20
+2
+15
+19
+22
+18
+17
+27
+23
+9
+13
+14
+10
+5
+24
+-1
+EOF

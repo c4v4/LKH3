@@ -1,0 +1,45 @@
+NAME : eil31.379.tour
+COMMENT : Cost = 0_379
+COMMENT : Found by LKH [Keld Helsgaun] Wed Sep 13 12:21:01 2017
+TYPE : TOUR
+DIMENSION : 37
+TOUR_SECTION
+1
+21
+7
+23
+9
+3
+20
+33
+22
+12
+14
+10
+29
+16
+34
+27
+5
+18
+6
+17
+36
+26
+2
+15
+4
+25
+37
+28
+8
+13
+19
+11
+32
+30
+24
+35
+31
+-1
+EOF

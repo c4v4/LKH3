@@ -1,0 +1,27 @@
+NAME : R161_15_120.1162584.tour
+COMMENT : Cost = 0_1162584
+COMMENT : Found by LKH [Keld Helsgaun] Thu Apr 27 22:36:11 2017
+TYPE : TOUR
+DIMENSION : 19
+TOUR_SECTION
+1
+18
+14
+7
+4
+13
+6
+15
+9
+10
+12
+3
+5
+19
+17
+8
+2
+16
+11
+-1
+EOF

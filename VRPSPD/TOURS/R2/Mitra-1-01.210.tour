@@ -1,0 +1,29 @@
+NAME : Mitra-1-01.210.tour
+COMMENT : Cost = 0_210
+COMMENT : Found by LKH [Keld Helsgaun] Thu Sep 14 11:11:20 2017
+TYPE : TOUR
+DIMENSION : 21
+TOUR_SECTION
+1
+8
+14
+15
+2
+12
+18
+9
+10
+16
+21
+6
+20
+5
+11
+7
+13
+17
+3
+4
+19
+-1
+EOF

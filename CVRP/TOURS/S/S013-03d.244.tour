@@ -1,0 +1,23 @@
+NAME : S013-03d.244.tour
+COMMENT : Cost = 0_244
+COMMENT : Found by LKH [Keld Helsgaun] Sun May  7 02:47:20 2017
+TYPE : TOUR
+DIMENSION : 15
+TOUR_SECTION
+1
+2
+3
+4
+5
+14
+6
+8
+9
+7
+15
+10
+12
+13
+11
+-1
+EOF

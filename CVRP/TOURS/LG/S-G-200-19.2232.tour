@@ -1,0 +1,39 @@
+NAME : S-G-200-19.2232.tour
+COMMENT : Length = 2232
+COMMENT : Found by LKH [Keld Helsgaun] Thu May 17 23:18:21 2018
+TYPE : TOUR
+DIMENSION : 31
+TOUR_SECTION
+1
+30
+31
+19
+27
+29
+17
+14
+2
+6
+10
+8
+22
+20
+26
+23
+13
+16
+4
+12
+24
+11
+5
+7
+3
+9
+15
+25
+21
+28
+18
+-1
+EOF
