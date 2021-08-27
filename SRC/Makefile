@@ -67,9 +67,6 @@ _OBJ = Activate.o AddCandidate.o AddExtraCandidates.o                  \
 
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 
-$(ODIR)/%.o: %.c $(DEPS)
-	$(CC) -c -o $@ $< $(CFLAGS)
-
 .PHONY: 
 	all clean
 
@@ -78,6 +75,12 @@ all:
 
 LKH: $(OBJ) $(DEPS)
 	$(CC) -o ../LKH $(OBJ) $(CFLAGS) -lm
+
+$(ODIR)/%.o: %.c $(DEPS) | $(ODIR)
+	$(CC) -c -o $@ $< $(CFLAGS)
+
+$(ODIR):
+	mkdir -p $@
 
 clean:
 	/bin/rm -f $(ODIR)/*.o ../LKH *~ ._* $(IDIR)/*~ $(IDIR)/._* 
