@@ -55,7 +55,7 @@ echo "RUNS = $runs" >> $par
 # echo "TOUR_FILE = TOURS/$class/$name.$.tour" >> $par
 # echo "SINTEF_SOLUTION_FILE = SOLUTIONS/$class/$name.$.sol" >> $par
 echo "TRACE_LEVEL = 1" >> $par
-echo "SEED = 0" >> $par
+echo "SEED = 1" >> $par
 
 if false; then
     for FILE in `ls TOURS/$class/$name.*.tour | sort -n -t . -k2,3` ;

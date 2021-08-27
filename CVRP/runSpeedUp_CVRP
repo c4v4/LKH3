@@ -1,0 +1,33 @@
+#!/bin/bash
+
+maxTrials=5000
+runs=1
+
+printf "Instance,Trials,Cost,Penalty,Time\n"
+
+printf "X-n157-k13,${maxTrials}," && ./run_CVRP Uchoa X-n157-k13 $maxTrials $runs 0 | grep "Run 1: Cost =" | awk -F'[ _,]' '{print $6 "," $5 "," $10}'
+printf "X-n228-k23,${maxTrials}," && ./run_CVRP Uchoa X-n228-k23 $maxTrials $runs 0 | grep "Run 1: Cost =" | awk -F'[ _,]' '{print $6 "," $5 "," $10}'
+printf "X-n242-k48,${maxTrials}," && ./run_CVRP Uchoa X-n242-k48 $maxTrials $runs 0 | grep "Run 1: Cost =" | awk -F'[ _,]' '{print $6 "," $5 "," $10}'
+printf "X-n336-k84,${maxTrials}," && ./run_CVRP Uchoa X-n336-k84 $maxTrials $runs 0 | grep "Run 1: Cost =" | awk -F'[ _,]' '{print $6 "," $5 "," $10}'
+printf "X-n393-k38,${maxTrials}," && ./run_CVRP Uchoa X-n393-k38 $maxTrials $runs 0 | grep "Run 1: Cost = " | awk -F'[ _,]' '{print $6 "," $5 "," $10}'
+printf "X-n469-k138,${maxTrials}," && ./run_CVRP Uchoa X-n469-k138 $maxTrials $runs 0 | grep "Run 1: Cost =" | awk -F'[ _,]' '{print $6 "," $5 "," $10}'
+printf "X-n513-k21,${maxTrials}," && ./run_CVRP Uchoa X-n513-k21 $maxTrials $runs 0 | grep "Run 1: Cost =" | awk -F'[ _,]' '{print $6 "," $5 "," $10}'
+printf "X-n561-k42,${maxTrials}," && ./run_CVRP Uchoa X-n561-k42 $maxTrials $runs 0 | grep "Run 1: Cost =" | awk -F'[ _,]' '{print $6 "," $5 "," $10}'
+printf "X-n641-k35,${maxTrials}," && ./run_CVRP Uchoa X-n641-k35 $maxTrials $runs 0 | grep "Run 1: Cost =" | awk -F'[ _,]' '{print $6 "," $5 "," $10}'
+printf "X-n670-k130,${maxTrials}," && ./run_CVRP Uchoa X-n670-k130 $maxTrials $runs 0 | grep "Run 1: Cost =" | awk -F'[ _,]' '{print $6 "," $5 "," $10}'
+printf "X-n716-k35,${maxTrials}," && ./run_CVRP Uchoa X-n716-k35 $maxTrials $runs 0 | grep "Run 1: Cost =" | awk -F'[ _,]' '{print $6 "," $5 "," $10}'
+printf "X-n801-k40,${maxTrials}," && ./run_CVRP Uchoa X-n801-k40 $maxTrials $runs 0 | grep "Run 1: Cost =" | awk -F'[ _,]' '{print $6 "," $5 "," $10}'
+printf "X-n876-k59,${maxTrials}," && ./run_CVRP Uchoa X-n876-k59 $maxTrials $runs 0 | grep "Run 1: Cost =" | awk -F'[ _,]' '{print $6 "," $5 "," $10}'
+printf "X-n979-k58,${maxTrials}," && ./run_CVRP Uchoa X-n979-k58 $maxTrials $runs 0 | grep "Run 1: Cost =" | awk -F'[ _,]' '{print $6 "," $5 "," $10}'
+printf "X-n1001-k43,${maxTrials}," && ./run_CVRP Uchoa X-n1001-k43 $maxTrials $runs 0 | grep "Run 1: Cost =" | awk -F'[ _,]' '{print $6 "," $5 "," $10}'
+
+printf "L1,${maxTrials}," && ./run_CVRP_Belgium L1 $maxTrials $runs 0 | grep "Run 1: Cost =" | awk -F'[ _,]' '{print $6 "," $5 "," $10}'
+printf "L2,${maxTrials}," && ./run_CVRP_Belgium L2 $maxTrials $runs 0 | grep "Run 1: Cost =" | awk -F'[ _,]' '{print $6 "," $5 "," $10}'
+printf "A1,${maxTrials}," && ./run_CVRP_Belgium A1 $maxTrials $runs 0 | grep "Run 1: Cost =" | awk -F'[ _,]' '{print $6 "," $5 "," $10}'
+printf "A2,${maxTrials}," && ./run_CVRP_Belgium A2 $maxTrials $runs 0 | grep "Run 1: Cost =" | awk -F'[ _,]' '{print $6 "," $5 "," $10}'
+printf "G1,${maxTrials}," && ./run_CVRP_Belgium G1 $maxTrials $runs 0 | grep "Run 1: Cost =" | awk -F'[ _,]' '{print $6 "," $5 "," $10}'
+printf "G2,${maxTrials}," && ./run_CVRP_Belgium G2 $maxTrials $runs 0 | grep "Run 1: Cost =" | awk -F'[ _,]' '{print $6 "," $5 "," $10}'
+printf "B1,${maxTrials}," && ./run_CVRP_Belgium B1 $maxTrials $runs 0 | grep "Run 1: Cost =" | awk -F'[ _,]' '{print $6 "," $5 "," $10}'
+printf "B2,${maxTrials}," && ./run_CVRP_Belgium B2 $maxTrials $runs 0 | grep "Run 1: Cost =" | awk -F'[ _,]' '{print $6 "," $5 "," $10}'
+printf "F1,${maxTrials}," && ./run_CVRP_Belgium F1 $maxTrials $runs 0 | grep "Run 1: Cost =" | awk -F'[ _,]' '{print $6 "," $5 "," $10}'
+printf "F2,${maxTrials}," && ./run_CVRP_Belgium F2 $maxTrials $runs 0 | grep "Run 1: Cost =" | awk -F'[ _,]' '{print $6 "," $5 "," $10}'

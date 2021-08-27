@@ -23,7 +23,8 @@ echo "PROBLEM_FILE = INSTANCES/$class/$name.vrptw" >> $par
 echo "MAX_TRIALS = $max_trials" >> $par
 echo "RUNS = $runs" >> $par
 # echo "TOUR_FILE = TOURS/$class/$name.$.tour" >> $par
-echo "TRACE_LEVEL = 0" >> $par
+echo "TRACE_LEVEL = 1" >> $par
+echo "SEED = 1" >> $par
 
 if [ -n "$optimum" ]; then
     echo "OPTIMUM = $optimum" >> $par

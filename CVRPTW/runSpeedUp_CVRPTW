@@ -1,0 +1,41 @@
+#!/bin/bash
+
+maxTrials=5000
+runs=1
+
+printf "Instance,Trials,Cost,Penalty,Time\n"
+
+printf "C1_2_5.200.20,${maxTrials}," && ./run_CVRPTW Homberger_200 C1_2_5.200.20 $maxTrials $runs 0 | grep "Run 1: Cost =" | awk -F'[ _,]' '{print $6 "," $5 "," $10}'
+printf "C2_2_9.200.6,${maxTrials}," && ./run_CVRPTW Homberger_200 C2_2_9.200.6 $maxTrials $runs 0 | grep "Run 1: Cost =" | awk -F'[ _,]' '{print $6 "," $5 "," $10}'
+printf "R1_2_10.200.18,${maxTrials}," && ./run_CVRPTW Homberger_200 R1_2_10.200.18 $maxTrials $runs 0 | grep "Run 1: Cost =" | awk -F'[ _,]' '{print $6 "," $5 "," $10}'
+printf "R2_2_2.200.4,${maxTrials}," && ./run_CVRPTW Homberger_200 R2_2_2.200.4 $maxTrials $runs 0 | grep "Run 1: Cost =" | awk -F'[ _,]' '{print $6 "," $5 "," $10}'
+printf "RC1_2_7.200.18,${maxTrials}," && ./run_CVRPTW Homberger_200 RC1_2_7.200.18 $maxTrials $runs 0 | grep "Run 1: Cost =" | awk -F'[ _,]' '{print $6 "," $5 "," $10}'
+printf "RC2_2_1.200.6,${maxTrials}," && ./run_CVRPTW Homberger_200 RC2_2_1.200.6 $maxTrials $runs 0 | grep "Run 1: Cost =" | awk -F'[ _,]' '{print $6 "," $5 "," $10}'
+
+printf "C1_4_3.400.36,${maxTrials}," && ./run_CVRPTW Homberger_400 C1_4_3.400.36 $maxTrials $runs 0 | grep "Run 1: Cost =" | awk -F'[ _,]' '{print $6 "," $5 "," $10}'
+printf "C2_4_2.400.12,${maxTrials}," && ./run_CVRPTW Homberger_400 C2_4_2.400.12 $maxTrials $runs 0 | grep "Run 1: Cost =" | awk -F'[ _,]' '{print $6 "," $5 "," $10}'
+printf "R1_4_9.400.36,${maxTrials}," && ./run_CVRPTW Homberger_400 R1_4_9.400.36 $maxTrials $runs 0 | grep "Run 1: Cost =" | awk -F'[ _,]' '{print $6 "," $5 "," $10}'
+printf "R2_4_1.400.8,${maxTrials}," && ./run_CVRPTW Homberger_400 R2_4_1.400.8 $maxTrials $runs 0 | grep "Run 1: Cost =" | awk -F'[ _,]' '{print $6 "," $5 "," $10}'
+printf "RC1_4_10.400.36,${maxTrials}," && ./run_CVRPTW Homberger_400 RC1_4_10.400.36 $maxTrials $runs 0 | grep "Run 1: Cost =" | awk -F'[ _,]' '{print $6 "," $5 "," $10}'
+printf "RC2_4_9.400.8,${maxTrials}," && ./run_CVRPTW Homberger_400 RC2_4_9.400.8 $maxTrials $runs 0 | grep "Run 1: Cost =" | awk -F'[ _,]' '{print $6 "," $5 "," $10}'
+
+printf "C1_6_4.600.56,${maxTrials}," && ./run_CVRPTW Homberger_600 C1_6_4.600.56 $maxTrials $runs 0 | grep "Run 1: Cost =" | awk -F'[ _,]' '{print $6 "," $5 "," $10}'
+printf "C2_6_10.600.17,${maxTrials}," && ./run_CVRPTW Homberger_600 C2_6_10.600.17 $maxTrials $runs 0 | grep "Run 1: Cost =" | awk -F'[ _,]' '{print $6 "," $5 "," $10}'
+printf "R1_6_5.600.54,${maxTrials}," && ./run_CVRPTW Homberger_600 R1_6_5.600.54 $maxTrials $runs 0 | grep "Run 1: Cost =" | awk -F'[ _,]' '{print $6 "," $5 "," $10}'
+printf "R2_6_1.600.11,${maxTrials}," && ./run_CVRPTW Homberger_600 R2_6_1.600.11 $maxTrials $runs 0 | grep "Run 1: Cost =" | awk -F'[ _,]' '{print $6 "," $5 "," $10}'
+printf "RC1_6_3.600.55,${maxTrials}," && ./run_CVRPTW Homberger_600 RC1_6_3.600.55 $maxTrials $runs 0 | grep "Run 1: Cost =" | awk -F'[ _,]' '{print $6 "," $5 "," $10}'
+printf "RC2_6_8.600.11,${maxTrials}," && ./run_CVRPTW Homberger_600 RC2_6_8.600.11 $maxTrials $runs 0 | grep "Run 1: Cost =" | awk -F'[ _,]' '{print $6 "," $5 "," $10}'
+
+printf "C1_8_7.800.77,${maxTrials}," && ./run_CVRPTW Homberger_800 C1_8_7.800.77 $maxTrials $runs 0 | grep "Run 1: Cost =" | awk -F'[ _,]' '{print $6 "," $5 "," $10}'
+printf "C2_8_10.800.23,${maxTrials}," && ./run_CVRPTW Homberger_800 C2_8_10.800.23 $maxTrials $runs 0 | grep "Run 1: Cost =" | awk -F'[ _,]' '{print $6 "," $5 "," $10}'
+printf "R1_8_6.800.72,${maxTrials}," && ./run_CVRPTW Homberger_800 R1_8_6.800.72 $maxTrials $runs 0 | grep "Run 1: Cost =" | awk -F'[ _,]' '{print $6 "," $5 "," $10}'
+printf "R2_8_6.800.15,${maxTrials}," && ./run_CVRPTW Homberger_800 R2_8_6.800.15 $maxTrials $runs 0 | grep "Run 1: Cost =" | awk -F'[ _,]' '{print $6 "," $5 "," $10}'
+printf "RC1_8_5.800.72,${maxTrials}," && ./run_CVRPTW Homberger_800 RC1_8_5.800.72 $maxTrials $runs 0 | grep "Run 1: Cost =" | awk -F'[ _,]' '{print $6 "," $5 "," $10}'
+printf "RC2_8_8.800.15,${maxTrials}," && ./run_CVRPTW Homberger_800 RC2_8_8.800.15 $maxTrials $runs 0 | grep "Run 1: Cost =" | awk -F'[ _,]' '{print $6 "," $5 "," $10}'
+
+printf "C1_10_10.1000.90,${maxTrials}," && ./run_CVRPTW Homberger_1000 C1_10_10.1000.90 $maxTrials $runs 0 | grep "Run 1: Cost =" | awk -F'[ _,]' '{print $6 "," $5 "," $10}'
+printf "C2_10_8.1000.28,${maxTrials}," && ./run_CVRPTW Homberger_1000 C2_10_8.1000.28 $maxTrials $runs 0 | grep "Run 1: Cost =" | awk -F'[ _,]' '{print $6 "," $5 "," $10}'
+printf "R1_10_5.1000.91,${maxTrials}," && ./run_CVRPTW Homberger_1000 R1_10_5.1000.91 $maxTrials $runs 0 | grep "Run 1: Cost =" | awk -F'[ _,]' '{print $6 "," $5 "," $10}'
+printf "R2_10_1.1000.19,${maxTrials}," && ./run_CVRPTW Homberger_1000 R2_10_1.1000.19 $maxTrials $runs 0 | grep "Run 1: Cost =" | awk -F'[ _,]' '{print $6 "," $5 "," $10}'
+printf "RC1_10_5.1000.90,${maxTrials}," && ./run_CVRPTW Homberger_1000 RC1_10_5.1000.90 $maxTrials $runs 0 | grep "Run 1: Cost =" | awk -F'[ _,]' '{print $6 "," $5 "," $10}'
+printf "RC2_10_1.1000.20,${maxTrials}," && ./run_CVRPTW Homberger_1000 RC2_10_1.1000.20 $maxTrials $runs 0 | grep "Run 1: Cost =" | awk -F'[ _,]' '{print $6 "," $5 "," $10}'
