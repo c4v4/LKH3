@@ -35,43 +35,46 @@
  * following preprocessor command line.	
  */
 
-#ifdef THREE_LEVEL_TREE
-#define PRED(a)\
-    (Reversed == ((a)->Parent->Reversed != (a)->Parent->Parent->Reversed) ?\
-    (a)->Pred : (a)->Suc)
-#define SUC(a)\
-    (Reversed == ((a)->Parent->Reversed != (a)->Parent->Parent->Reversed) ?\
-    (a)->Suc : (a)->Pred)
+#ifdef THREE_LEVEL_TREE 
+#define PRED(a) \
+        (Reversed == ((a)->Parent->Reversed != (a)->Parent->Parent->Reversed) ? (a)->Pred : (a)->Suc)
+#define SUC(a) \
+        (Reversed == ((a)->Parent->Reversed != (a)->Parent->Parent->Reversed) ? (a)->Suc : (a)->Pred)
 #define BETWEEN(a, b, c) Between_SSL(a, b, c)
 #define FLIP(a, b, c, d) Flip_SSL(a, b, c)
 #endif
-#ifdef TWO_LEVEL_TREE
+#ifdef TWO_LEVEL_TREE 
 #define PRED(a) (Reversed == (a)->Parent->Reversed ? (a)->Pred : (a)->Suc)
 #define SUC(a) (Reversed == (a)->Parent->Reversed ? (a)->Suc : (a)->Pred)
+#define PRED_COST(a) (Reversed == (a)->Parent->Reversed ? (a)->PredCost : (a)->SucCost)
+#define SUC_COST(a) (Reversed == (a)->Parent->Reversed ? (a)->SucCost : (a)->PredCost)
 #define BETWEEN(a, b, c) Between_SL(a, b, c)
 #define FLIP(a, b, c, d) Flip_SL(a, b, c)
 #endif
-#ifdef ONE_LEVEL_TREE
+#ifdef ONE_LEVEL_TREE 
 #define PRED(a) (Reversed ? (a)->Suc : (a)->Pred)
 #define SUC(a) (Reversed ? (a)->Pred : (a)->Suc)
+#define PRED_COST(a) (Reversed ? (a)->SucCost : (a)->PredCost)
+#define SUC_COST(a) (Reversed ? (a)->PredCost : (a)->SucCost)
 #define BETWEEN(a, b, c) Between(a, b, c)
 #define FLIP(a, b, c, d) Flip(a, b, c)
 #endif
 
-#define PREDD(a) ((a)->Parent ? PRED(a) :\
-                 Reversed ? (a)->Suc : (a)->Pred)
-#define SUCC(a) ((a)->Parent ? SUC(a) :\
-                 Reversed ? (a)->Pred : (a)->Suc)
+#define PREDD(a) ((a)->Parent ? PRED(a) : Reversed ? (a)->Suc : (a)->Pred)
+#define SUCC(a) ((a)->Parent ? SUC(a) : Reversed ? (a)->Pred : (a)->Suc)
 
-#define Swap1(a1,a2,a3)\
-        FLIP(a1,a2,a3,0)
-#define Swap2(a1,a2,a3, b1,b2,b3)\
-        (Swap1(a1,a2,a3), Swap1(b1,b2,b3))
-#define Swap3(a1,a2,a3, b1,b2,b3, c1,c2,c3)\
-        (Swap2(a1,a2,a3, b1,b2,b3), Swap1(c1,c2,c3))
-#define Swap4(a1,a2,a3, b1,b2,b3, c1,c2,c3, d1,d2,d3)\
-        (Swap3(a1,a2,a3, b1,b2,b3, c1,c2,c3), Swap1(d1,d2,d3))
-#define Swap5(a1,a2,a3, b1,b2,b3, c1,c2,c3, d1,d2,d3, e1,e2,e3)\
-        (Swap4(a1,a2,a3, b1,b2,b3, c1,c2,c3, d1,d2,d3), Swap1(e1,e2,e3))
+#define SUCC_COST(a, b) ((a)->Parent ? SUC_COST(a) : Reversed ? (a)->PredCost : (a)->SucCost)
+#define PREDD_COST(a, b) ((a)->Parent ? PRED_COST(a) : Reversed ? (a)->SucCost : (a)->PredCost)
+
+#define Swap1(a1, a2, a3) \
+        FLIP(a1, a2, a3, 0)
+#define Swap2(a1, a2, a3, b1, b2, b3) \
+        (Swap1(a1, a2, a3), Swap1(b1, b2, b3))
+#define Swap3(a1, a2, a3, b1, b2, b3, c1, c2, c3) \
+        (Swap2(a1, a2, a3, b1, b2, b3), Swap1(c1, c2, c3))
+#define Swap4(a1, a2, a3, b1, b2, b3, c1, c2, c3, d1, d2, d3) \
+        (Swap3(a1, a2, a3, b1, b2, b3, c1, c2, c3), Swap1(d1, d2, d3))
+#define Swap5(a1, a2, a3, b1, b2, b3, c1, c2, c3, d1, d2, d3, e1, e2, e3) \
+        (Swap4(a1, a2, a3, b1, b2, b3, c1, c2, c3, d1, d2, d3), Swap1(e1, e2, e3))
 
 #endif

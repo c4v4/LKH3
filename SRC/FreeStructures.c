@@ -46,6 +46,11 @@ void FreeStructures()
     Free(cycle);
     Free(G);
     FreePopulation();
+
+#ifdef CAVA_PENALTY
+    Free(cava_PetalsData);
+    Free(cava_NodeCache);
+#endif
 }
 
 /*      

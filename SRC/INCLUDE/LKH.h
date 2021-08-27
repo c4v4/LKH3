@@ -5,7 +5,7 @@
 
 #ifdef CAVA_CUSTOM
     #define CAVA_CACHE /* Cost and Forbidden function cache optimization */
-    #define CAVA_PENALTY
+    #define CAVA_PENALTY /* CVRP and CVRPTW penalty optimization */
     #define CAVA_FLIP
 #endif
 
@@ -85,91 +85,106 @@ MergeTourFunction MergeWithTour;
 
 /* The Node structure is used to represent nodes (cities) of the problem */
 
-struct Node {
-    int Id;     /* Number of the node (1...Dimension) */
-    int Loc;    /* Location of the node in the heap 
-                   (zero, if the node is not in the heap) */
-    int Rank;   /* During the ascent, the priority of the node.
+typedef struct _RouteData RouteData; /* Forward declaration, see the end of this file*/
+
+struct Node
+{
+    double Earliest, Latest;
+    double ServiceTime;
+    int Demand;            /* Customer demand in a CVRP or 1-PDTSP instance */
+    int *C;                /* A row in the cost matrix */
+    int DepotId;           /* Equal to Id if the node is a depot; otherwize 0 */
+    Node *Pred, *Suc;      /* Predecessor and successor node in 
+                          the two-way list of nodes */
+    int PredCost, SucCost; /* The costs of the neighbor edges on the current tour */
+    Node *FixedTo1,        /* Pointers to the opposite end nodes of fixed edges. */
+        *FixedTo2;         /* A maximum of two fixed edges can be incident to a node */
+    int Pi;                /* Pi-value of the node */
+    Segment *Parent;       /* Parent segment of a node when the two-level
+                          tree representation is used */
+    int Id;                /* Number of the node (1...Dimension) */
+    int Rank;              /* During the ascent, the priority of the node.
                    Otherwise, the ordinal number of the node in 
                    the tour */
-    int V;      /* During the ascent the degree of the node minus 2.
+    int Loc;               /* Location of the node in the heap 
+                   (zero, if the node is not in the heap) */
+
+    int V;        /* During the ascent the degree of the node minus 2.
                    Otherwise, the variable is used to mark nodes */
-    int LastV;  /* Last value of V during the ascent */
-    int Cost;   /* "Best" cost of an edge emanating from the node */
-    int NextCost;  /* During the ascent, the next best cost of an edge
+    int LastV;    /* Last value of V during the ascent */
+    int Cost;     /* "Best" cost of an edge emanating from the node */
+    int NextCost; /* During the ascent, the next best cost of an edge
                       emanating from the node */
-    int PredCost,  /* The costs of the neighbor edges on the current tour */ 
-        SucCost; 
     int SavedCost;
-    int Pi;     /* Pi-value of the node */
-    int BestPi; /* Currently best pi-value found during the ascent */
-    int Beta;   /* Beta-value (used for computing alpha-values) */
+    int BestPi;     /* Currently best pi-value found during the ascent */
+    int Beta;       /* Beta-value (used for computing alpha-values) */
     int Subproblem; /* Number of the subproblem the node is part of */
-    int Sons;   /* Number of sons in the minimum spanning tree */
-    int *C;     /* A row in the cost matrix */
-    int Special;       /* Is the node a special node in Jonker and
+    int Sons;       /* Number of sons in the minimum spanning tree */
+    int Special;    /* Is the node a special node in Jonker and
                           Volgenant's mTSP to TSP transformation? */
-    int Demand;        /* Customer demand in a CVRP or 1-PDTSP instance */
-    int *M_Demand;     /* Table of demands in an M-PDTSP instance */
-    int Seq;           /* Sequence number in the current tour */
-    int DraftLimit;    /* Draft limit in a TSPDL instance */
-    int Load;          /* Accumulated load in the current route */
-    int OriginalId;    /* The original Id in a SDVRP or STTSPinstance */
-    Node *Pred, *Suc;  /* Predecessor and successor node in 
-                          the two-way list of nodes */
+
+    int *M_Demand;  /* Table of demands in an M-PDTSP instance */
+    int Seq;        /* Sequence number in the current tour */
+    int DraftLimit; /* Draft limit in a TSPDL instance */
+    int Load;       /* Accumulated load in the current route */
+    int OriginalId; /* The original Id in a SDVRP or STTSPinstance */
+
     Node *OldPred, *OldSuc; /* Previous values of Pred and Suc */
-    Node *BestSuc,     /* Best and next best successor node in the */
-         *NextBestSuc; /* currently best tour */
-    Node *Dad;         /* Father of the node in the minimum 1-tree */
-    Node *Nearest;     /* Nearest node (used in the greedy heuristics) */
-    Node *Next; /* Auxiliary pointer, usually to the next node in a list
+    Node *BestSuc,          /* Best and next best successor node in the */
+        *NextBestSuc;       /* currently best tour */
+    Node *Dad;              /* Father of the node in the minimum 1-tree */
+    Node *Nearest;          /* Nearest node (used in the greedy heuristics) */
+    Node *Next;             /* Auxiliary pointer, usually to the next node in a list
                    of nodes (e.g., the list of "active" nodes) */
-    Node *Prev; /* Auxiliary pointer, usually to the previous node 
+    Node *Prev;             /* Auxiliary pointer, usually to the previous node 
                    in a list of nodes */
-    Node *Mark; /* Visited mark */
-    Node *FixedTo1,    /* Pointers to the opposite end nodes of fixed edges. */
-         *FixedTo2;    /* A maximum of two fixed edges can be incident
-                          to a node */
-    Node *FixedTo1Saved, /* Saved values of FixedTo1 and FixedTo2 */
-         *FixedTo2Saved;
-    Node *Head; /* Head of a segment of fixed or common edges */
-    Node *Tail; /* Tail of a segment of fixed or common edges */
-    Node *InputSuc;    /* Successor in the INPUT_TOUR file */
-    Node *InitialSuc;  /* Successor in the INITIAL_TOUR file */
-    Node *SubproblemPred; /* Predecessor in the SUBPROBLEM_TOUR file */
-    Node *SubproblemSuc;  /* Successor in the SUBPROBLEM_TOUR file */
-    Node *SubBestPred; /* The best predecessor node in a subproblem */
-    Node *SubBestSuc;  /* The best successor node in a subproblem */
-    Node *MergePred;   /* Predecessor in the first MERGE_TOUR file */
-    Node **MergeSuc;   /* Successors in the MERGE_TOUR files */
-    Node *Added1, *Added2; /* Pointers to the opposite end nodes
+    Node *Mark;             /* Visited mark */
+    Node *FixedTo1Saved,    /* Saved values of FixedTo1 and FixedTo2 */
+        *FixedTo2Saved;
+    Node *Head;                      /* Head of a segment of fixed or common edges */
+    Node *Tail;                      /* Tail of a segment of fixed or common edges */
+    Node *InputSuc;                  /* Successor in the INPUT_TOUR file */
+    Node *InitialSuc;                /* Successor in the INITIAL_TOUR file */
+    Node *SubproblemPred;            /* Predecessor in the SUBPROBLEM_TOUR file */
+    Node *SubproblemSuc;             /* Successor in the SUBPROBLEM_TOUR file */
+    Node *SubBestPred;               /* The best predecessor node in a subproblem */
+    Node *SubBestSuc;                /* The best successor node in a subproblem */
+    Node *MergePred;                 /* Predecessor in the first MERGE_TOUR file */
+    Node **MergeSuc;                 /* Successors in the MERGE_TOUR files */
+    Node *Added1, *Added2;           /* Pointers to the opposite end nodes
                               of added edges in a submove */
-    Node *Deleted1, *Deleted2;  /* Pointers to the opposite end nodes
+    Node *Deleted1, *Deleted2;       /* Pointers to the opposite end nodes
                                    of deleted edges in a submove */
-    Node *SucSaved;             /* Saved pointer to successor node */
-    Candidate *CandidateSet;    /* Candidate array */
+    Node *SucSaved;                  /* Saved pointer to successor node */
+    Candidate *CandidateSet;         /* Candidate array */
     Candidate *BackboneCandidateSet; /* Backbone candidate array */
-    Segment *Parent;   /* Parent segment of a node when the two-level
-                          tree representation is used */
+
     Constraint *FirstConstraint;
     int *PathLength;
     int **Path;
-    double ServiceTime;
     int Pickup, Delivery;
-    int DepotId;     /* Equal to Id if the node is a depot; otherwize 0 */
-    double Earliest, Latest;
     int Backhaul;
     int Serial;
     int Color;
-    double X, Y, Z;     /* Coordinates of the node */
-    double Xc, Yc, Zc;  /* Converted coordinates */
-    char Axis;  /* The axis partitioned when the node is part of a KDTree */
-    char OldPredExcluded, OldSucExcluded;  /* Booleans used for indicating 
+    double X, Y, Z;                       /* Coordinates of the node */
+    double Xc, Yc, Zc;                    /* Converted coordinates */
+    char Axis;                            /* The axis partitioned when the node is part of a KDTree */
+    char OldPredExcluded, OldSucExcluded; /* Booleans used for indicating 
                                               whether one (or both) of the 
                                               adjoining nodes on the old tour 
                                               has been excluded */
-    char Required; /* Is the node required in a STTSP? */
+    char Required;                        /* Is the node required in a STTSP? */
+
+#ifdef CAVA_PENALTY
+    int PFlag;  /*used to mark nodes */
+    RouteData* PetalId;  /* Pointer to struct with current route data */
+    int PetalRank;  /* Position of the node inside the route */
+    GainType prevPenalty; /* Previous Penalty value of the node, for partial iteration of routes */
+    GainType prevDemandSum; /* Previous Demand value of the node, for partial iteration of routes */
+    GainType prevCostSum; /* Previous Cost value of the node, for partial iteration of routes */
+#endif
 };
+   
 
 /* The Candidate structure is used to represent candidate edges */
 
@@ -654,6 +669,21 @@ static inline int Forbidden(Node *Na, Node *Nb) {
 
 CostFunction C;
 int Forbidden(Node *Na, Node *Nb);
+
+#endif
+
+#ifdef CAVA_PENALTY
+
+typedef struct _RouteData
+{
+    int flag;
+    GainType OldPenalty;
+    GainType CandPenalty;
+    Node *minNode;
+} RouteData;
+
+RouteData *cava_PetalsData;
+Node **cava_NodeCache;
 
 #endif
 
