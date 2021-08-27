@@ -1,16 +1,33 @@
 # LKH3
-Customized version of Helsgaun's LKH3 algorithm for vehicle routing problems.
+Customized version of Keld Helsgaun's LKH3 algorithm for vehicle routing problems. 
 
-Original README content:
+__*All rights reserved to the original author.*__ 
+
+The original code is available in [here](http://webhotel4.ruc.dk/~keld/research/LKH-3), along with a large dataset of instances for VRP problems supported by the LKH-3 algorithm. 
+ 
+In this version, I tried to improve the performances of the LKH-3 in terms of computing efficiency, maintaining, when possible, the search trajectory with respect to the original code. 
+
+The main modifications introduced regarded the *Penalty* function of some of the variants (namely CVRP and CVRPTW), and the *Flip* function for asymmetric problems. 
+
+For the *Penalty* function, CVRP and CVRPTW are used as an example, however, the same technique can be extended also to other mTSP-like problems.
+
+Part of the modifications have been realized during the work for the Set-Partitoning based local search heuristic realized in joint work with Emilio Bendotti and Matteo Fischetti.
+***{insert paper data when it will be available}***
+
+
+All the speedup test have been computed ***{insert workstation data}***
+
+
+---
+
+## Original README.txt content:
 
 LKH is an implementation of the Lin-Kernighan traveling salesman heuristic.
 
 The code is distributed for research use. The author reserves all rights to 
 the code.
 
-
-INSTRUCTIONS FOR INSTALLATION: (Version 3.0.6 - May 2019)
------------------------------
+### INSTRUCTIONS FOR INSTALLATION: (Version 3.0.6 - May 2019)
 
 The software is available in gzipped tar format:
 
@@ -41,16 +58,14 @@ Just edit the first line in SRC/Makefile and execute the commands
 	make clean
 	make
 
-CHANGES IN LKH-3.0.6:
----------------------
+### CHANGES IN LKH-3.0.6:
 
 Added code for solving the Steiner traveling salesman problem (STTSP). 
 New keyword
 
     REQUIRED_NODES_SECTION
 
-CHANGES IN LKH-3.0.5:
----------------------
+### CHANGES IN LKH-3.0.5:
 
 Added code for solving the open close multiple traveling salesman problem (OCMTSP). 
 New keyword
@@ -58,8 +73,7 @@ New keyword
     EXTERNAL_SALESMEN
 
 
-CHANGES IN LKH-3.0.4:
----------------------
+### CHANGES IN LKH-3.0.4:
 
 Added code for solving the colored traveling saleman problem (CTSP). 
 The node coloring is described in a
@@ -70,8 +84,7 @@ New initial tour algorithm: CTSP
 
 Added code solving the minimum latency problem (MLP).
 
-CHANGES IN VERSION 3.0.3:
--------------------------
+### CHANGES IN VERSION 3.0.3:
 
 Candidate sets may now be created by means of POPMUSIC by giving the following
 specification in the parameter file for LKH:
@@ -106,8 +119,7 @@ they will take their default values. These parameters are:
     initial tour for Lin-Kernighan.
     Default: NO.
 
-CHANGES IN VERSION 3.0.2:
--------------------------
+### CHANGES IN VERSION 3.0.2:
 
 Tours may now be recombined by GPX2 (Generalized Partition Crossover 2) 
 instead of IPT (Iterative Partial Transcription). 
@@ -123,13 +135,11 @@ The possible settings are:
 IPT is default.
 
 	
-CHANGES IN VERSION 3.0.1:
--------------------------
+### CHANGES IN VERSION 3.0.1:
 
     New problem type: TSPDL (traveling salesman with draft limits)
 
-NEW IN VERSION 3.0:
--------------------
+### NEW IN VERSION 3.0:
 	
 New parameter keywords:
 
