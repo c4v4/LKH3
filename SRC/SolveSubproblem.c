@@ -110,7 +110,7 @@ SolveSubproblem(int CurrentSubproblem, int Subproblems,
                 Next->FixedTo1 = Last;
             else
                 Next->FixedTo2 = Last;
-            if (C == C_EXPLICIT) {
+            if (_C == C_EXPLICIT) {
                 if (Last->Id > Next->Id) {
                     Last->SavedCost = Last->C[Next->Id];
                     Last->C[Next->Id] = 0;
@@ -311,7 +311,7 @@ SolveSubproblem(int CurrentSubproblem, int Subproblems,
     if (TraceLevel >= 1)
         PrintStatistics();
 
-    if (C == C_EXPLICIT) {
+    if (_C == C_EXPLICIT) {
         N = FirstNode;
         do {
             for (i = 1; i < N->Id; i++) {

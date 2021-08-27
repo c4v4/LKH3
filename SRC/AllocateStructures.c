@@ -40,6 +40,9 @@ void AllocateStructures()
     for (i = 1; i <= Dimension; i++)
         Rand[i] = Random();
     SRandom(Seed);
+
+#ifndef CAVA_CACHE
+
     if (WeightType != EXPLICIT) {
         for (i = 0; (1 << i) < (Dimension << 1); i++);
         i = 1 << i;
@@ -47,6 +50,21 @@ void AllocateStructures()
         CacheVal = (int *) calloc(i, sizeof(int));
         CacheMask = i - 1;
     }
+
+#else
+
+    /* CacheSig containes bot Sig and Val one next to the other. */
+    for (i = 0; (1 << i) < (Dimension << 1); i++);
+    i = 1 << i;
+    cava_ForbiddenCacheSig = (int *) calloc(i * 2, sizeof(int));
+    CacheMask = i - 1;
+
+    if (WeightType != EXPLICIT) {
+        CacheSig = (int *) calloc(i * 2, sizeof(int));
+    }
+    
+#endif
+
     AllocateSegments();
     K = MoveType;
     if (SubsequentMoveType > K)

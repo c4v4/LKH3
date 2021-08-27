@@ -391,7 +391,7 @@ void ReadProblem()
     Type = EdgeWeightType = EdgeWeightFormat = 0;
     EdgeDataFormat = NodeCoordType = DisplayDataType = 0;
     Distance = 0;
-    C = 0;
+    _C = 0;
     c = 0;
     DistanceLimit = DBL_MAX;
     while ((Line = ReadLine(ProblemFile))) {
@@ -708,8 +708,14 @@ void ReadProblem()
                         NodeSet[i].C[j] += NodeSet[i].ServiceTime;
         }
     }
+    
+#ifdef CAVA_CACHE
+    _C = WeightType == EXPLICIT ? C_EXPLICIT : C_FUNCTION;
+#else
     C = WeightType == EXPLICIT ? C_EXPLICIT : C_FUNCTION;
-    D = WeightType == EXPLICIT ? D_EXPLICIT : D_FUNCTION;
+#endif   
+ 
+ D = WeightType == EXPLICIT ? D_EXPLICIT : D_FUNCTION;
     if (ProblemType != CVRP && ProblemType != CVRPTW &&
         ProblemType != CTSP && ProblemType != STTSP &&
         ProblemType != TSP && ProblemType != ATSP) {

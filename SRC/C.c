@@ -36,7 +36,6 @@ int C_FUNCTION(Node * Na, Node * Nb)
 {
     Node *Nc;
     Candidate *Cand;
-    int Index, i, j;
 
     if (CostMatrix)
         return D(Na, Nb);
@@ -62,6 +61,10 @@ int C_FUNCTION(Node * Na, Node * Nb)
         for (; (Nc = Cand->To); Cand++)
             if (Nc == Na)
                 return Cand->Cost;
+
+#ifndef CAVA_CACHE
+    int Index, i, j;
+
     if (CacheSig == 0)
         return D(Na, Nb);
     i = Na->Id;
@@ -76,6 +79,13 @@ int C_FUNCTION(Node * Na, Node * Nb)
         return CacheVal[Index];
     CacheSig[Index] = i;
     return (CacheVal[Index] = D(Na, Nb));
+
+#else
+
+    return D(Na, Nb);
+
+#endif
+    
 }
 
 int D_EXPLICIT(Node * Na, Node * Nb)

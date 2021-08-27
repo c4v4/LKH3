@@ -6,7 +6,11 @@
  * If the edge is forbidden, the function returns 1; otherwise 0.
  */
 
+#ifndef CAVA_CACHE
 int Forbidden(Node * Na, Node * Nb)
+#else
+int _Forbidden(Node * Na, Node * Nb)
+#endif
 {
     if (Na == Nb)
         return 1;

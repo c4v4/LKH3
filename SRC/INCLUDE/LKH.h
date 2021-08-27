@@ -1,6 +1,14 @@
 #ifndef _LKH_H
 #define _LKH_H
 
+#define CAVA_CUSTOM /* Activate all the introduced changes */
+
+#ifdef CAVA_CUSTOM
+    #define CAVA_CACHE /* Cost and Forbidden function cache optimization */
+    #define CAVA_PENALTY
+    #define CAVA_FLIP
+#endif
+
 /*
  * This header is used by almost all functions of the program. It defines 
  * macros and specifies data structures and function prototypes.
@@ -382,9 +390,8 @@ int CandidateSetSymmetric, CandidateSetType, Capacity,
     RohePartitioning, Salesmen, SierpinskiPartitioning,
     SubproblemBorders, SubproblemsCompressed, WeightType, WeightFormat;
 
-FILE *ParameterFile, *ProblemFile, *PiFile, *InputTourFile,
-    *InitialTourFile, *SubproblemTourFile, **MergeTourFile;
-CostFunction Distance, D, C, c, OldDistance;
+FILE *ParameterFile, *ProblemFile, *PiFile, *InputTourFile, *InitialTourFile, *SubproblemTourFile, **MergeTourFile;
+CostFunction Distance, D, /* C, moved at the end*/ c, OldDistance;
 MoveFunction BestMove, BacktrackMove, BestSubsequentMove;
 PenaltyFunction Penalty;
 
@@ -478,7 +485,7 @@ GainType FindTour(void);
 void Flip(Node * t1, Node * t2, Node * t3);
 void Flip_SL(Node * t1, Node * t2, Node * t3);
 void Flip_SSL(Node * t1, Node * t2, Node * t3);
-int Forbidden(Node * Na, Node * Nb);
+/* int Forbidden(Node * Na, Node * Nb); //cava: modified, look at the end of the file */
 void FreeCandidateSets(void);
 void FreeSegments(void);
 void FreeStructures(void);
@@ -600,6 +607,54 @@ void UpdateStatistics(GainType Cost, double Time);
 void VRPB_Reduce(void);
 void WriteCandidates(void);
 void WritePenalties(void);
-void WriteTour(char * FileName, int * Tour, GainType Cost);
+void WriteTour(char *FileName, int *Tour, GainType Cost);
+
+#ifdef CAVA_CACHE
+int *cava_ForbiddenCacheSig; /* Table of the signatures of cached distances */
+
+/* Caches are checked before anything else (to improve cache-friendliness and avoid multiple cache miss)*/
+CostFunction _C;
+static inline int C(Node *Na, Node *Nb) {
+    if (CacheSig) {
+        int Index, i, j;
+        i = Na->Id;
+        j = Nb->Id;
+        if (i > j) {
+            int k = i;
+            i = j;
+            j = k;
+        }
+        Index = ((i << 8) + i + j) & CacheMask;
+        if (CacheSig[Index * 2] == i) return CacheSig[Index * 2 + 1];
+        CacheSig[Index * 2] = i;
+        return (CacheSig[Index * 2 + 1] = _C(Na, Nb));
+    }
+    return _C(Na, Nb);
+}
+
+/* A similar cache is introduced also for the Forbidden function to reduce cache-misses */
+int _Forbidden(Node *Na, Node *Nb);
+static inline int Forbidden(Node *Na, Node *Nb) {
+    int Index, i, j;
+    i = Na->Id;
+    j = Nb->Id;
+    if (i > j) {
+        int k = i;
+        i = j;
+        j = k;
+    }
+    Index = ((i << 8) + i + j) & CacheMask;
+    if (cava_ForbiddenCacheSig[Index * 2] == i) return cava_ForbiddenCacheSig[Index * 2 + 1];
+    cava_ForbiddenCacheSig[Index * 2] = i;
+    return (cava_ForbiddenCacheSig[Index * 2 + 1] = _Forbidden(Na, Nb));
+}
+
+#else
+#define _C C
+
+CostFunction C;
+int Forbidden(Node *Na, Node *Nb);
+
+#endif
 
 #endif

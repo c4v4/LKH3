@@ -1,6 +1,8 @@
 #ifndef _GENETIC_H
 #define _GENETIC_H
 
+#include "GainType.h"
+
 /*
  * This header specifies the interface for the genetic algorithm part of LKH.
  */

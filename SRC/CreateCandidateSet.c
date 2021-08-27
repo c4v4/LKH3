@@ -23,7 +23,7 @@ void CreateCandidateSet()
     double EntryTime = GetTime();
 
     Norm = 9999;
-    if (C == C_EXPLICIT) {
+    if (_C == C_EXPLICIT) {
         Na = FirstNode;
         do {
             for (i = 1; i < Na->Id; i++)
@@ -174,7 +174,7 @@ void CreateCandidateSet()
         if (!CandidatesRead && SubproblemSize == 0)
             WriteCandidates();
     }
-    if (C == C_EXPLICIT) {
+    if (_C == C_EXPLICIT) {
         Na = FirstNode;
         do
             for (i = 1; i < Na->Id; i++)
