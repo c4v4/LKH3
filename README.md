@@ -3,20 +3,29 @@ Customized version of Keld Helsgaun's LKH3 algorithm for vehicle routing problem
 
 __*All rights reserved to the original author.*__ 
 
-The original code is available in [here](http://webhotel4.ruc.dk/~keld/research/LKH-3), along with a large dataset of instances for VRP problems supported by the LKH-3 algorithm. 
+The original code is available [here](http://webhotel4.ruc.dk/~keld/research/LKH-3), along with a large dataset of instances for VRP problems supported by the LKH-3 algorithm. 
  
 In this version, I tried to improve the performances of the LKH-3 in terms of computing efficiency, maintaining, when possible, the search trajectory with respect to the original code. 
 
-The main modifications introduced regarded the *Penalty* function of some of the variants (namely CVRP and CVRPTW), and the *Flip* function for asymmetric problems. 
+The main modifications introduced regarded the *Penalty* function of some of the variants (namely CVRP and CVRPTW), the caching system, and the *Flip* function for asymmetric problems.
 
-For the *Penalty* function, CVRP and CVRPTW are used as an example, however, the same technique can be extended also to other mTSP-like problems.
+### CVRP and CVRPTW Penalty functions
+The main idea has been to restrict the exploration of the TSP-tour representation to only the routes touched by the current r-opt move.
+Some data needs to be kept updated between calls, but this O(n) update is needed only when an improving solution is found (which happens rarely), speeding-up the common "rejecting case".
 
-Part of the modifications have been realized during the work for the Set-Partitoning based local search heuristic realized in joint work with Emilio Bendotti and Matteo Fischetti.
+For the *Penalty* function, CVRP and CVRPTW are used as an example, however, the same techniques can be extended also to other mTSP-like problems.
+
+### Caching Systems
+The cache-check is move in a small function prologue (another smaller function called before the original one) ready to be inlined by the compiler.
+
+### Linear Flip
+For problems that are represented using the ATSP->TSP transformation, no actual flip can happen. Exploiting this limitation of the r-opt moves in asymmetric problems, the Flip function can be made O(1), with the addition of a O(n) "update step" that needs to be called when an actual improvement is found (which is rare).
+Note that, switching from two-level tree representation to the single-level one affects the search trajectory.
+
+---
+
+*Part of the development has been carried out during the work for the Set-Partitioning based local-search heuristic realized in joint work with Emilio Bendotti and Matteo Fischetti.*
 ***{insert paper data when it will be available}***
-
-
-All the speedup test have been computed ***{insert workstation data}***
-
 
 ---
 

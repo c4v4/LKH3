@@ -1,6 +1,8 @@
 #include "LKH.h"
 
+#ifdef CAVA_FLIP
 static void cava_FlipAsym(Node *t1, Node *t2, Node *t3);
+#endif
 
 /*
  * The Flip function performs a 2-opt move. Edges (t1,t2) and (t3,t4) 

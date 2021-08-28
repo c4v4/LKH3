@@ -505,7 +505,7 @@ GainType FindTour(void);
 void Flip(Node * t1, Node * t2, Node * t3);
 void Flip_SL(Node * t1, Node * t2, Node * t3);
 void Flip_SSL(Node * t1, Node * t2, Node * t3);
-/* int Forbidden(Node * Na, Node * Nb); //cava: modified, look at the end of the file */
+int Forbidden(Node * Na, Node * Nb);
 void FreeCandidateSets(void);
 void FreeSegments(void);
 void FreeStructures(void);
@@ -630,7 +630,6 @@ void WritePenalties(void);
 void WriteTour(char *FileName, int *Tour, GainType Cost);
 
 #ifdef CAVA_CACHE
-int *cava_ForbiddenCacheSig; /* Table of the signatures of cached distances */
 
 /* Caches are checked before anything else (to improve cache-friendliness and avoid multiple cache miss)*/
 CostFunction _C;
@@ -652,28 +651,10 @@ static inline int C(Node *Na, Node *Nb) {
     return _C(Na, Nb);
 }
 
-/* A similar cache is introduced also for the Forbidden function to reduce cache-misses */
-int _Forbidden(Node *Na, Node *Nb);
-static inline int Forbidden(Node *Na, Node *Nb) {
-    int Index, i, j;
-    i = Na->Id;
-    j = Nb->Id;
-    if (i > j) {
-        int k = i;
-        i = j;
-        j = k;
-    }
-    Index = ((i << 8) + i + j) & CacheMask;
-    if (cava_ForbiddenCacheSig[Index * 2] == i) return cava_ForbiddenCacheSig[Index * 2 + 1];
-    cava_ForbiddenCacheSig[Index * 2] = i;
-    return (cava_ForbiddenCacheSig[Index * 2 + 1] = _Forbidden(Na, Nb));
-}
-
 #else
 #define _C C
 
 CostFunction C;
-int Forbidden(Node *Na, Node *Nb);
 
 #endif
 
