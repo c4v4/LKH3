@@ -1,3 +1,5 @@
+CUSTOM=-DCAVA_CUSTOM # Comment out to remove changes
+
 TREE_TYPE = TWO_LEVEL_TREE
 # TREE_TYPE = THREE_LEVEL_TREE
 # TREE_TYPE = ONE_LEVEL_TREE
@@ -5,7 +7,7 @@ TREE_TYPE = TWO_LEVEL_TREE
 # CC = gcc
 IDIR = INCLUDE
 ODIR = OBJ
-CFLAGS = -O3 -Wall -I$(IDIR) -D$(TREE_TYPE) -g -fcommon -flto -fno-fat-lto-objects
+CFLAGS = -O3 -Wall -I$(IDIR) -D$(TREE_TYPE) $(CUSTOM) -g -fcommon -flto -fno-fat-lto-objects #-fno-omit-frame-pointer
 
 _DEPS = Delaunay.h GainType.h Genetic.h GeoConversion.h Hashing.h      \
         Heap.h LKH.h Segment.h Sequence.h BIT.h gpx.h
@@ -75,6 +77,12 @@ all:
 
 LKH: $(OBJ) $(DEPS)
 	$(CC) -o ../LKH $(OBJ) $(CFLAGS) -lm
+
+one-level: tree-one LKH
+	/bin/rm -f $(ODIR)/*.o *~ ._* $(IDIR)/*~ $(IDIR)/._* 
+
+tree-one:
+	$(eval TREE_TYPE=ONE_LEVEL_TREE)
 
 $(ODIR)/%.o: %.c $(DEPS) | $(ODIR)
 	$(CC) -c -o $@ $< $(CFLAGS)

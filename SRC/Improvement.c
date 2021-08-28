@@ -29,6 +29,11 @@ int Improvement(GainType * Gain, Node * t1, Node * SUCt1)
                  TSPTW_MakespanCost()) * Precision;
         if (NewPenalty < CurrentPenalty || *Gain > 0) {
             PenaltyGain = CurrentPenalty - NewPenalty;
+
+#ifdef CAVA_FLIP
+            cava_FlipAsym_Update();
+#endif
+
             return 1;
         }
     }

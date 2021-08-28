@@ -1,12 +1,17 @@
 #ifndef _LKH_H
 #define _LKH_H
 
-#define CAVA_CUSTOM /* Activate all the introduced changes */
+//#define CAVA_CUSTOM /* Activate all the introduced changes */
 
 #ifdef CAVA_CUSTOM
-    #define CAVA_CACHE /* Cost and Forbidden function cache optimization */
-    #define CAVA_PENALTY /* CVRP and CVRPTW penalty optimization */
-    #define CAVA_FLIP
+    
+#define CAVA_CACHE /* Cost and Forbidden function cache optimization */
+#define CAVA_PENALTY /* CVRP and CVRPTW penalty optimization */
+
+#ifdef ONE_LEVEL_TREE 
+#define CAVA_FLIP /* Asymmetric Flip optimization */
+#endif
+
 #endif
 
 /*
@@ -685,6 +690,10 @@ typedef struct _RouteData
 RouteData *cava_PetalsData;
 Node **cava_NodeCache;
 
+#endif
+
+#ifdef CAVA_FLIP
+void cava_FlipAsym_Update();
 #endif
 
 #endif
