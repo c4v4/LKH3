@@ -1,27 +1,27 @@
-run_CVRP Augerat_A A-n32-k5 10000 10 784
-run_CVRP Augerat_A A-n33-k5 10000 10 661
-run_CVRP Augerat_A A-n33-k6 10000 10 742
-run_CVRP Augerat_A A-n34-k5 10000 10 778
-run_CVRP Augerat_A A-n36-k5 10000 10 799
-run_CVRP Augerat_A A-n37-k5 10000 10 669
-run_CVRP Augerat_A A-n37-k6 10000 10 949
-run_CVRP Augerat_A A-n38-k5 10000 10 730
-run_CVRP Augerat_A A-n39-k5 10000 10 822
-run_CVRP Augerat_A A-n39-k6 10000 10 831
-run_CVRP Augerat_A A-n44-k6 10000 10 937
-run_CVRP Augerat_A A-n45-k6 10000 10 944
-run_CVRP Augerat_A A-n45-k7 10000 10 1146
-run_CVRP Augerat_A A-n46-k7 10000 10 914
-run_CVRP Augerat_A A-n48-k7 10000 10 1073
-run_CVRP Augerat_A A-n53-k7 10000 10 1010
-run_CVRP Augerat_A A-n54-k7 10000 10 1167
-run_CVRP Augerat_A A-n55-k9 10000 10 1073
-run_CVRP Augerat_A A-n60-k9 10000 10 1354
-run_CVRP Augerat_A A-n61-k9 10000 10 1034
-run_CVRP Augerat_A A-n62-k8 10000 10 1288
-run_CVRP Augerat_A A-n63-k9 10000 10 1616
-run_CVRP Augerat_A A-n63-k10 10000 10 1314
-run_CVRP Augerat_A A-n64-k9 10000 10 1401
-run_CVRP Augerat_A A-n65-k9 10000 10 1174
-run_CVRP Augerat_A A-n69-k9 10000 10 1159
-run_CVRP Augerat_A A-n80-k10 10000 10 1763
+run_CVRP Augerat_A A-n32-k5 10000 10 1 784
+run_CVRP Augerat_A A-n33-k5 10000 10 1 661
+run_CVRP Augerat_A A-n33-k6 10000 10 1 742
+run_CVRP Augerat_A A-n34-k5 10000 10 1 778
+run_CVRP Augerat_A A-n36-k5 10000 10 1 799
+run_CVRP Augerat_A A-n37-k5 10000 10 1 669
+run_CVRP Augerat_A A-n37-k6 10000 10 1 949
+run_CVRP Augerat_A A-n38-k5 10000 10 1 730
+run_CVRP Augerat_A A-n39-k5 10000 10 1 822
+run_CVRP Augerat_A A-n39-k6 10000 10 1 831
+run_CVRP Augerat_A A-n44-k6 10000 10 1 937
+run_CVRP Augerat_A A-n45-k6 10000 10 1 944
+run_CVRP Augerat_A A-n45-k7 10000 10 1 1146
+run_CVRP Augerat_A A-n46-k7 10000 10 1 914
+run_CVRP Augerat_A A-n48-k7 10000 10 1 1073
+run_CVRP Augerat_A A-n53-k7 10000 10 1 1010
+run_CVRP Augerat_A A-n54-k7 10000 10 1 1167
+run_CVRP Augerat_A A-n55-k9 10000 10 1 1073
+run_CVRP Augerat_A A-n60-k9 10000 10 1 1354
+run_CVRP Augerat_A A-n61-k9 10000 10 1 1034
+run_CVRP Augerat_A A-n62-k8 10000 10 1 1288
+run_CVRP Augerat_A A-n63-k9 10000 10 1 1616
+run_CVRP Augerat_A A-n63-k10 10000 10 1 1314
+run_CVRP Augerat_A A-n64-k9 10000 10 1 1401
+run_CVRP Augerat_A A-n65-k9 10000 10 1 1174
+run_CVRP Augerat_A A-n69-k9 10000 10 1 1159
+run_CVRP Augerat_A A-n80-k10 10000 10 1 1763

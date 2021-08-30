@@ -1,10 +1,10 @@
-run_CVRP_Belgium Belgium L1 10000 10 194095 # Improved from 194456
-run_CVRP_Belgium Belgium L2 10000 10 112998 # Improved from 114817
-run_CVRP_Belgium Belgium A1 10000 10 480140 # Improved from 481583
-run_CVRP_Belgium Belgium A2 10000 10 294940 # Improved from 296055
-run_CVRP_Belgium Belgium G1 10000 10 472202 # Improved from 473568
-run_CVRP_Belgium Belgium G2 10000 10 263506 # Improved from 264512
-run_CVRP_Belgium Belgium B1 10000 10 505755 # Improved from 507103
-run_CVRP_Belgium Belgium B2 10000 10 354789 # Improved from 355779
-run_CVRP_Belgium Belgium F1 10000 10 7279086 # Improved from 7295447
-run_CVRP_Belgium Belgium F2 10000 10 4499188 # Improved from 4504416
+run_CVRP_Belgium Belgium L1 10000 10 1 194095 # Improved from 194456
+run_CVRP_Belgium Belgium L2 10000 10 1 112998 # Improved from 114817
+run_CVRP_Belgium Belgium A1 10000 10 1 480140 # Improved from 481583
+run_CVRP_Belgium Belgium A2 10000 10 1 294940 # Improved from 296055
+run_CVRP_Belgium Belgium G1 10000 10 1 472202 # Improved from 473568
+run_CVRP_Belgium Belgium G2 10000 10 1 263506 # Improved from 264512
+run_CVRP_Belgium Belgium B1 10000 10 1 505755 # Improved from 507103
+run_CVRP_Belgium Belgium B2 10000 10 1 354789 # Improved from 355779
+run_CVRP_Belgium Belgium F1 10000 10 1 7279086 # Improved from 7295447
+run_CVRP_Belgium Belgium F2 10000 10 1 4499188 # Improved from 4504416

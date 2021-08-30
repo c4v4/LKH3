@@ -11,7 +11,8 @@ class="Belgium"
 name=$1
 max_trials=$2
 runs=$3
-optimum=$4
+seed=$4
+optimum=$5
 par=TMP/$name.pid$$.par
 
 mkdir -p TOURS
@@ -24,7 +25,7 @@ echo "INITIAL_PERIOD = 1000" >>$par
 echo "MAX_TRIALS = $max_trials" >>$par
 echo "RUNS = $runs" >>$par
 echo "TRACE_LEVEL = 1" >>$par
-echo "SEED = 1" >>$par
+echo "SEED = ${seed}" >>$par
 
 $lkh $par
 

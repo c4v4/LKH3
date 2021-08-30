@@ -1,1 +1,1 @@
-run_CVRP Golden G-n262-k25 10000 10 5525 # My best: 5526
+run_CVRP Golden G-n262-k25 10000 10 1 5525 # My best: 5526
