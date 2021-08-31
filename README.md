@@ -1,6 +1,6 @@
-# LKH3 
+# LKH-3.c4v4 
 
-Customized version of Keld Helsgaun's LKH3 algorithm for vehicle routing problems.  
+Customized version of Keld Helsgaun's LKH-3 algorithm for vehicle routing problems.  
 
 __*All rights reserved to the original author.*__  
 
@@ -9,22 +9,22 @@ The original code is available [here](http://webhotel4.ruc.dk/~keld/research/LKH
 The aim of this project is to proposed some (hopefully useful) performance improvements for the LKH-3 in terms of computing efficiency, maintaining, when possible, the search trajectory with respect to the original code.   
 
 *Part of the development has been carried out during the work for the Set-Partitioning based Local-Search heuristic realized in joint work with Emilio Bendotti and Matteo Fischetti:* 
-***{available soon}*** 
+__*{available soon}*__
 
 ---
 
-## Differences with the Original 
+## Differences with the Original LKH-3
 
 The modifications introduced regarded the *Penalty* function of some of the variants (namely the CVRP and CVRPTW) and the *Flip* function for asymmetric problems. 
 
-### CVRP and CVRPTW Penalty functions 
+### CVRP and CVRPTW Penalty functions  ([commit](https://github.com/c4v4/LKH-3/commit/04c636f6544a4aa6ba9ffd54797e61a5e5651503))
 
 The original penalty function, although optimized with many early-exit conditions, display a O(n) time complexity (where n is the number of nodes in the solution). The main proposed idea, has been to restrict the exploration of the TSP-tour representation to only the routes touched by the current r-opt move. 
 
 In order to compute a correct penalty value, some data needs to be kept updated between calls. However, this O(n) update is needed only when an improving solution is found, which rarely happens w.r.t. the common "rejecting case", speeding-up the latter one.
 
 For the *Penalty* function, CVRP and CVRPTW are used as an example, however, the same techniques can be extended also to other mTSP-like problems (i.e. problems with multiple routes). 
-### Linear Flip 
+### Linear Flip ([commit](https://github.com/c4v4/LKH-3/commit/532c5631440154afeb27bac66ef75cae4678af3f))
 
 For problems that are represented using the Jonker-Volgenant ATSP->TSP transformation, no actual flip can happen during the local search. Exploiting this limitation of the r-opt moves in asymmetric problems, the doubly-linked-list based Flip function can be made O(1), with the addition of a O(n) "update step" that needs to be called when an actual improvement is found (which is rare). 
 
@@ -41,11 +41,11 @@ A brief set of benchmarks have been executed to test the speedup with CVRP and C
 The results are also available as a [google doc](https://docs.google.com/spreadsheets/d/1Esg-xHBSdPgNsuO5iTLkXmuDSP0oPHyUJFNkHZDvqa0/edit?usp=sharing). 
 
 For all the test, only the time of the single *RUN* has been counted, ignoring the setup time where the ascent procedure is run to create the candidate set. 
-Moreover, in the plots the x axis displays the Customers + Vehicles sum, since inside the LKH3 each solution is represented with a TSP-tour of such size (or twice as big for asymmetric problems).
+Moreover, in the plots the x axis displays the Customers + Vehicles sum, since inside the LKH-3 each solution is represented with a TSP-tour of such size (or twice as big for asymmetric problems).
 ### CVRP Speedup
 For the CVRP variant the full Uchoa dataset (containing 100 instances, from 100 to 1000 customers) along with the Belgium dataset (containing 10 instances, from 3000 to 30000 customers) have been used.  
 
-Both the original LKH3 and the customized one have been tested with 4 different random seeds for each instance, executing a single *RUN* per seed. Fornthe Uchoa instances the number of *TRIALS* have been set to 10000, while, for the bigger Belgium instances, 5000 *TRIALS* have been used. 
+Both the original LKH-3 and the customized one have been tested with 4 different random seeds for each instance, executing a single *RUN* per seed. Fornthe Uchoa instances the number of *TRIALS* have been set to 10000, while, for the bigger Belgium instances, 5000 *TRIALS* have been used. 
 
 Speedup for Uchoa instances only:
 
@@ -63,9 +63,9 @@ Also in this case, each configuration has been tested with 4 different random se
 
 In this case 3 version have been tested, namely: 
 
-1. **Orig:** The original LKH3. 
-2. **Pen:** The LKH3 with only the new Penalty and caching system (which maintain the same search trajectory w.r.t. the original). 
-3. **All:** The LKH3 with the new Penalty, caching system and Flip function (which obtain different results due to a different search trajectory). 
+1. **Orig:** The original LKH-3. 
+2. **Pen:** The LKH-3 with only the new Penalty and caching system (which maintain the same search trajectory w.r.t. the original). 
+3. **All:** The LKH-3 with the new Penalty, caching system and Flip function (which obtain different results due to a different search trajectory). 
 
 The speedup between the original and version 2 (blue), and between the original and version 3 (red) is here reported.
 ![](https://docs.google.com/spreadsheets/d/e/2PACX-1vSvf2ytONEuoXCGUxmecOqxcGdyNxmV-dL_B9J48XJ_LJjRPAWW5yCNvzEcyXoTG6UxTEURCX6eLYFb/pubchart?oid=1589534476&format=image)

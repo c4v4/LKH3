@@ -6,10 +6,55 @@
  * The basic idea behind this optimization is to exploit the fact
  * that at each call only few "routes" (aka petals) have been
  * modified, and we can retrieve this petals simply by looking
- * at the saved Opt moves in the SwapStack array.
+ * at the saved Opt-moves in the SwapStack array.
  * The implementantio becames less general (since not all the
  * checked tour are obtained from Opt moves), so in some
  * special (and few) cases the old penalty is still called.
+ * 
+ * Differently form the CVRP Penalty, in this case the asymmetric 
+ * representation of the solution require some further adaptations.
+ * 
+ * At the beginning of the function a setup phase is needed to compute
+ * the previous partial penalty associated to the involved routes.
+ * 
+ * In this phase:
+ * - The old partial penalty is computed.
+ * - The depot-copy at the start of the routes is stored in 
+ *   cava_NodeCache.
+ * - The minNode of each route is saved to further speeding up the 
+ *   route explorarion.
+ * 
+ * Each route is considered only once using the "flag" field of the 
+ * RouteData.
+ * **Differently from the CVRP penalty case**, here each depot copy 
+ * is considered as part of the route that follows in the tour 
+ * representation.
+ * Moreover the field RouteData::PetalRank is used to find which is 
+ * the first node (minNode) of the route touched by the current r-Opt 
+ * move. 
+ * It will be used later to skip the initial part of the route. 
+ * (NOTE: the same could have been made for the last node, however the 
+ * overhead introduced by that change has shown to be greater of the 
+ * actual improvement).
+ *  
+ * After the setup phase, the actual check starts.
+ * The depot-copies saved in the cava_NodeCache are used to retrieve 
+ * the RouteData information. The minNode tell the starting point, 
+ * while the minNode->prevCostSum, minNode->prevDemandSum and  
+ * minNode->prevPenalty fileds are used to initialize the relative 
+ * variables (CostSum, DemandSum and petalP), warmstarting the route
+ * exploration.
+ * 
+ * The route iteration proceed only forward in this case, until an 
+ * early-exit condition, or a depot-copy is found.
+ * 
+ * When an improvement is found, the update function is called.
+ * The cava_NodeCache is used to rapidly retrieve which routes need to 
+ * be updated.
+ * In this case a more complex update procedure needs to be 
+ * accomplished, since, along with the new partial penalty of the route, 
+ * also the Node::prevCostSum, Node::prevDemandSum and 
+ * Node::prevPenalty fileds of each node of the route need to be updated.
  */
 
 #ifdef CAVA_PENALTY
