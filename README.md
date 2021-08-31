@@ -6,32 +6,29 @@ __*All rights reserved to the original author.*__
 
 The original code is available [here](http://webhotel4.ruc.dk/~keld/research/LKH-3), along with a large dataset of instances for VRP problems supported by the LKH-3 algorithm.  
 
-In this version, I tried to improve the performances of the LKH-3 in terms of computing efficiency, maintaining, when possible, the search trajectory with respect to the original code.   
+The aim of this project is to proposed some (hopefully useful) performance improvements for the LKH-3 in terms of computing efficiency, maintaining, when possible, the search trajectory with respect to the original code.   
 
---- 
+*Part of the development has been carried out during the work for the Set-Partitioning based Local-Search heuristic realized in joint work with Emilio Bendotti and Matteo Fischetti: 
+***{available soon}*** 
 
-*Part of the development has been carried out during the work for the Set-Partitioning based Local-Search heuristic realized in joint work with Emilio Bendotti and Matteo Fischetti.* 
-
-***{insert paper data when it will be available}*** 
-
---- 
+---
 
 ## Differences with the Original 
 
-The modifications introduced regarded the *Penalty* function of some of the variants (namely CVRP and CVRPTW) and the *Flip* function for asymmetric problems. 
+The modifications introduced regarded the *Penalty* function of some of the variants (namely the CVRP and CVRPTW) and the *Flip* function for asymmetric problems. 
 
 ### CVRP and CVRPTW Penalty functions 
 
-The original penalty function, although optimized with many early-exit conditions, display a O(n) time complexity (where n is the number of nodes of the solution). The main idea has been to restrict the exploration of the TSP-tour representation to only the routes touched by the current r-opt move. 
+The original penalty function, although optimized with many early-exit conditions, display a O(n) time complexity (where n is the number of nodes in the solution). The main proposed idea, has been to restrict the exploration of the TSP-tour representation to only the routes touched by the current r-opt move. 
 
-Some data needs to be kept updated between calls, but this O(n) update is needed only when an improving solution is found, which rarely happens w.r.t. the common "rejecting case", speeding-up the latter one. 
+In order to compute a correct penalty value, some data needs to be kept updated between calls. However, this O(n) update is needed only when an improving solution is found, which rarely happens w.r.t. the common "rejecting case", speeding-up the latter one.
 
 For the *Penalty* function, CVRP and CVRPTW are used as an example, however, the same techniques can be extended also to other mTSP-like problems (i.e. problems with multiple routes). 
 ### Linear Flip 
 
-For problems that are represented using the ATSP->TSP transformation, no actual flip can happen. Exploiting this limitation of the r-opt moves in asymmetric problems, the Flip function can be made O(1), with the addition of a O(n) "update step" that needs to be called when an actual improvement is found (which is rare). 
+For problems that are represented using the Jonker-Volgenant ATSP->TSP transformation, no actual flip can happen during the local search. Exploiting this limitation of the r-opt moves in asymmetric problems, the doubly-linked-list based Flip function can be made O(1), with the addition of a O(n) "update step" that needs to be called when an actual improvement is found (which is rare). 
 
-Note that, switching from the two-level tree representation to the single-level one affects the search trajectory. 
+Note that, switching from the two-level tree representation to the single-level one (i.e. the doubly-linked-list representation) affects the search trajectory, resulting in different obtained solutions.
 
 ### Caching Systems 
 
@@ -46,10 +43,9 @@ The results are also available as a [google doc](https://docs.google.com/spreads
   
 For the CVRP variant the full Uchoa dataset (containing 100 instances, from 100 to 1000 customers) along with the Belgium dataset (containing 10 instances, from 3000 to 30000 customers) have been used.  
 
-Both the original LKH3 and the customized one have been tested with 4 different random seeds for each instance, executing a single *RUN* per seed. For Uchoa instances the number of *TRIALS* have been set to 10000, while, for the bigger Belgium instances, 5000 *TRIALS* have been used. 
-
+Both the original LKH3 and the customized one have been tested with 4 different random seeds for each instance, executing a single *RUN* per seed. Fornthe Uchoa instances the number of *TRIALS* have been set to 10000, while, for the bigger Belgium instances, 5000 *TRIALS* have been used. 
   
-For the CVRPTW problem, a subset of the Homberger dataset has been selected. Sixty instances have been chosen, randomly selecting 2 instances for each of the different classes (which are 6 classes for each of the 5 different sizes). 
+For the CVRPTW problem, a subset of the Homberger dataset has been selected. Sixty instances have been chosen, randomly selecting 2 instances for each class (there are 6 classes for each of the 5 different sizes). 
 
 Also in this case, each configuration has been tested with 4 different random seeds, with 1 *RUN* of 10000 *TRIALS* each. 
 
@@ -57,12 +53,11 @@ In this case 3 version have been tested, namely:
 
 1. The original LKH3. 
 2. The LKH3 with only the new Penalty and caching system (which maintain the same search trajectory w.r.t. the original). 
-3. The LKH3 with the new Penalty, caching system and Flip function (which obtain different result due to a different search trajectory). 
+3. The LKH3 with the new Penalty, caching system and Flip function (which obtain different results due to a different search trajectory). 
   
-
-For all the test, only the *RUN* time has been counted, ignoring the setup time where the ascent procedure is run to create the candidate set. 
-
+For all the test, only the time of the single *RUN* has been counted, ignoring the setup time where the ascent procedure is run to create the candidate set. 
  
+--- 
 ## Original README.txt content:
 
 LKH is an implementation of the Lin-Kernighan traveling salesman heuristic.
