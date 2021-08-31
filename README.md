@@ -40,22 +40,35 @@ A brief set of benchmarks have been executed to test the speedup with CVRP and C
 
 The results are also available as a [google doc](https://docs.google.com/spreadsheets/d/1Esg-xHBSdPgNsuO5iTLkXmuDSP0oPHyUJFNkHZDvqa0/edit?usp=sharing). 
 
-  
+For all the test, only the time of the single *RUN* has been counted, ignoring the setup time where the ascent procedure is run to create the candidate set. 
+Moreover, in the plots the x axis displays the Customers + Vehicles sum, since inside the LKH3 each solution is represented with a TSP-tour of such size (or twice as big for asymmetric problems).
+### CVRP Speedup
 For the CVRP variant the full Uchoa dataset (containing 100 instances, from 100 to 1000 customers) along with the Belgium dataset (containing 10 instances, from 3000 to 30000 customers) have been used.  
 
 Both the original LKH3 and the customized one have been tested with 4 different random seeds for each instance, executing a single *RUN* per seed. Fornthe Uchoa instances the number of *TRIALS* have been set to 10000, while, for the bigger Belgium instances, 5000 *TRIALS* have been used. 
+
+Speedup for Uchoa instances only:
+
+![](https://docs.google.com/spreadsheets/d/e/2PACX-1vSvf2ytONEuoXCGUxmecOqxcGdyNxmV-dL_B9J48XJ_LJjRPAWW5yCNvzEcyXoTG6UxTEURCX6eLYFb/pubchart?oid=567013812&format=image)
   
+Speedup for both Uchoa and Belgium instances: 
+
+![](https://docs.google.com/spreadsheets/d/e/2PACX-1vSvf2ytONEuoXCGUxmecOqxcGdyNxmV-dL_B9J48XJ_LJjRPAWW5yCNvzEcyXoTG6UxTEURCX6eLYFb/pubchart?oid=391158656&format=image)
+
+
+### CVRPTW Speedup
 For the CVRPTW problem, a subset of the Homberger dataset has been selected. Sixty instances have been chosen, randomly selecting 2 instances for each class (there are 6 classes for each of the 5 different sizes). 
 
 Also in this case, each configuration has been tested with 4 different random seeds, with 1 *RUN* of 10000 *TRIALS* each. 
 
 In this case 3 version have been tested, namely: 
 
-1. The original LKH3. 
-2. The LKH3 with only the new Penalty and caching system (which maintain the same search trajectory w.r.t. the original). 
-3. The LKH3 with the new Penalty, caching system and Flip function (which obtain different results due to a different search trajectory). 
-  
-For all the test, only the time of the single *RUN* has been counted, ignoring the setup time where the ascent procedure is run to create the candidate set. 
+1. **Orig:** The original LKH3. 
+2. **Pen:** The LKH3 with only the new Penalty and caching system (which maintain the same search trajectory w.r.t. the original). 
+3. **All:** The LKH3 with the new Penalty, caching system and Flip function (which obtain different results due to a different search trajectory). 
+
+The speedup between the original and version 2 (blue), and between the original and version 3 (red) is here reported.
+![](https://docs.google.com/spreadsheets/d/e/2PACX-1vSvf2ytONEuoXCGUxmecOqxcGdyNxmV-dL_B9J48XJ_LJjRPAWW5yCNvzEcyXoTG6UxTEURCX6eLYFb/pubchart?oid=1589534476&format=image)
  
 --- 
 ## Original README.txt content:
