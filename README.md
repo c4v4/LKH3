@@ -17,14 +17,14 @@ __*{available soon}*__
 
 The changes introduced regarded the *Penalty* function of some of the variants (namely, the CVRP and CVRPTW) and the *Flip* function for asymmetric problems. 
 
-### CVRP and CVRPTW Penalty functions  ([commit](https://github.com/c4v4/LKH-3/commit/04c636f6544a4aa6ba9ffd54797e61a5e5651503))
+### CVRP and CVRPTW Penalty functions  ([commit](https://github.com/c4v4/LKH3/commit/04c636f6544a4aa6ba9ffd54797e61a5e5651503))
 
-The original penalty function, although optimized with many early-exit conditions, display a O(n) time complexity (where n is the number of nodes in the solution). The main idea applied, has been to restrict the exploration of the TSP-tour representation to only the routes touched by the current r-opt move. 
+The original penalty function, although optimized with many early-exit conditions, displays a O(n) time complexity (where n is the number of nodes in the solution). The main idea applied, has been to restrict the exploration of the TSP-tour representation to only the routes touched by the current r-opt move. 
 
-In order to compute a correct penalty value, some data needs to be kept updated between calls. However, this O(n) update is needed only when an improving solution is found, which rarely happens w.r.t. the common "rejecting case", speeding-up the latter one.
+In order to compute the correct penalty value, some data needs to be kept updated between calls. However, this O(n) update is needed only when an improving solution is found, which rarely happens w.r.t. the common "rejecting case", speeding-up the latter one.
 
 For the *Penalty* function, CVRP and CVRPTW are used as an example, however, the same techniques can be extended also to other mTSP-like problems (i.e. problems with multiple routes). 
-### Linear Flip ([commit](https://github.com/c4v4/LKH-3/commit/532c5631440154afeb27bac66ef75cae4678af3f))
+### Linear Flip ([commit](https://github.com/c4v4/LKH3/commit/532c5631440154afeb27bac66ef75cae4678af3f))
 
 For problems that are represented using the Jonker-Volgenant ATSP->TSP transformation, no actual flip can happen during the local search. Exploiting this limitation of the r-opt moves in asymmetric problems, the doubly-linked-list based Flip function can be made O(1), with the addition of a O(n) "update step" that needs to be called when an actual improvement is found (which is rare). 
 
