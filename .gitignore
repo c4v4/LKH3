@@ -3,3 +3,7 @@ LKH
 
 .vscode
 .DS_Store
+
+*.log
+*.log.job.e*
+*.par

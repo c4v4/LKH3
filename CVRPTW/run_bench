@@ -1,0 +1,5 @@
+#!/bin/sh
+
+#printf "${2},${3}," && ./run_CVRP ${1} ${2} ${3} ${4} 0 | grep "Run 1: Cost =" | awk -F'[ _,]' '{print $6 "," $5 "," $10}'
+printf "#DATA: ${2},${3},${5}\n"
+./run_CVRPTW ${1} ${2} ${3} ${4} ${5} 0

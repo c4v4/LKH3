@@ -11,7 +11,8 @@ class=$1
 name=$2
 max_trials=$3
 runs=$4
-optimum=$5
+seed=$5
+optimum=$6
 par=TMP/$name.pid$$.par
 
 mkdir -p TOURS
@@ -24,7 +25,7 @@ echo "MAX_TRIALS = $max_trials" >> $par
 echo "RUNS = $runs" >> $par
 # echo "TOUR_FILE = TOURS/$class/$name.$.tour" >> $par
 echo "TRACE_LEVEL = 1" >> $par
-echo "SEED = 1" >> $par
+echo "SEED = ${seed}" >> $par
 
 if [ -n "$optimum" ]; then
     echo "OPTIMUM = $optimum" >> $par
