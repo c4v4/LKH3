@@ -8,7 +8,7 @@ The original code is available [here](http://webhotel4.ruc.dk/~keld/research/LKH
 
 The aim of this project is to proposed some (hopefully useful) performance improvements for the LKH-3 in terms of computing efficiency, maintaining, when possible, the search trajectory with respect to the original code.   
 
-*Part of the development has been carried out during the work for the Set-Partitioning based Local-Search heuristic realized in joint work with Emilio Bendotti and Matteo Fischetti: 
+*Part of the development has been carried out during the work for the Set-Partitioning based Local-Search heuristic realized in joint work with Emilio Bendotti and Matteo Fischetti:* 
 ***{available soon}*** 
 
 ---
