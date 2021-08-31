@@ -6,7 +6,7 @@ __*All rights reserved to the original author.*__
 
 The original code is available [here](http://webhotel4.ruc.dk/~keld/research/LKH-3), along with a large dataset of instances for VRP problems supported by the LKH-3 algorithm.  
 
-The aim of this project is to proposed some (hopefully useful) performance improvements for the LKH-3 in terms of computing efficiency, maintaining, when possible, the search trajectory with respect to the original code.   
+The aim of this project is to propose some (hopefully useful) performance improvements for the LKH-3 in terms of computing efficiency, maintaining, when possible, the search trajectory with respect to the original code.   
 
 *Part of the development has been carried out during the work for the Set-Partitioning based Local-Search heuristic realized in joint work with Emilio Bendotti and Matteo Fischetti:* 
 __*{available soon}*__
@@ -15,11 +15,11 @@ __*{available soon}*__
 
 ## Differences with the Original LKH-3
 
-The modifications introduced regarded the *Penalty* function of some of the variants (namely the CVRP and CVRPTW) and the *Flip* function for asymmetric problems. 
+The changes introduced regarded the *Penalty* function of some of the variants (namely, the CVRP and CVRPTW) and the *Flip* function for asymmetric problems. 
 
 ### CVRP and CVRPTW Penalty functions  ([commit](https://github.com/c4v4/LKH-3/commit/04c636f6544a4aa6ba9ffd54797e61a5e5651503))
 
-The original penalty function, although optimized with many early-exit conditions, display a O(n) time complexity (where n is the number of nodes in the solution). The main proposed idea, has been to restrict the exploration of the TSP-tour representation to only the routes touched by the current r-opt move. 
+The original penalty function, although optimized with many early-exit conditions, display a O(n) time complexity (where n is the number of nodes in the solution). The main idea applied, has been to restrict the exploration of the TSP-tour representation to only the routes touched by the current r-opt move. 
 
 In order to compute a correct penalty value, some data needs to be kept updated between calls. However, this O(n) update is needed only when an improving solution is found, which rarely happens w.r.t. the common "rejecting case", speeding-up the latter one.
 
@@ -28,7 +28,7 @@ For the *Penalty* function, CVRP and CVRPTW are used as an example, however, the
 
 For problems that are represented using the Jonker-Volgenant ATSP->TSP transformation, no actual flip can happen during the local search. Exploiting this limitation of the r-opt moves in asymmetric problems, the doubly-linked-list based Flip function can be made O(1), with the addition of a O(n) "update step" that needs to be called when an actual improvement is found (which is rare). 
 
-Note that, switching from the two-level tree representation to the single-level one (i.e. the doubly-linked-list representation) affects the search trajectory, resulting in different obtained solutions.
+Note that, switching from the two-level tree representation to the single-level one (i.e. the doubly-linked-list representation) affects the search trajectory, resulting in different solutions.
 
 ### Caching Systems 
 
@@ -40,12 +40,12 @@ A brief set of benchmarks have been executed to test the speedup with CVRP and C
 
 The results are also available as a [google doc](https://docs.google.com/spreadsheets/d/1Esg-xHBSdPgNsuO5iTLkXmuDSP0oPHyUJFNkHZDvqa0/edit?usp=sharing). 
 
-For all the test, only the time of the single *RUN* has been counted, ignoring the setup time where the ascent procedure is run to create the candidate set. 
-Moreover, in the plots the x axis displays the Customers + Vehicles sum, since inside the LKH-3 each solution is represented with a TSP-tour of such size (or twice as big for asymmetric problems).
+For all the tests, only the time of the single *RUN* has been counted, ignoring the setup time needed by the ascent procedure to define the candidate set. 
+Moreover, in the plots that follow, the x axis displays the Customers + Vehicles sum, since inside the LKH-3 each solution is represented with a TSP-tour of such size (or twice as big for asymmetric problems).
 ### CVRP Speedup
 For the CVRP variant the full Uchoa dataset (containing 100 instances, from 100 to 1000 customers) along with the Belgium dataset (containing 10 instances, from 3000 to 30000 customers) have been used.  
 
-Both the original LKH-3 and the customized one have been tested with 4 different random seeds for each instance, executing a single *RUN* per seed. Fornthe Uchoa instances the number of *TRIALS* have been set to 10000, while, for the bigger Belgium instances, 5000 *TRIALS* have been used. 
+Both the original LKH-3 and the customized one have been tested with 4 different random seeds for each instance, executing a single *RUN* per seed. For the Uchoa instances, the number of *TRIALS* have been set to 10000, while, for the bigger Belgium instances, 5000 *TRIALS* have been used. 
 
 Speedup for Uchoa instances only:
 
