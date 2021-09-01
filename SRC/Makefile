@@ -1,13 +1,17 @@
-CUSTOM=-DCAVA_CUSTOM # Comment out to remove changes
+CUSTOM=-DCAVA_CUSTOM # Uncomment to activate all changes
+#CUSTOM_PENALTY=-DCAVA_PENALTY # Uncomment to activate CVRP and CVRPTW penalty optimization
+#CUSTOM_CACHE=-DCAVA_CACHE # Uncomment to activate the cost function cache optimization
+#CUSTOM_FLIP=-DCAVA_FLIP # Uncomment to activate the one-level tree Flip function optimization (needs TREE_TYPE = ONE_LEVEL_TREE)
 
-TREE_TYPE = TWO_LEVEL_TREE
-# TREE_TYPE = THREE_LEVEL_TREE
-# TREE_TYPE = ONE_LEVEL_TREE
+#TREE_TYPE = TWO_LEVEL_TREE
+#TREE_TYPE = THREE_LEVEL_TREE
+TREE_TYPE = ONE_LEVEL_TREE
 
 # CC = gcc
 IDIR = INCLUDE
 ODIR = OBJ
-CFLAGS = -O3 -Wall -I$(IDIR) -D$(TREE_TYPE) $(CUSTOM) -g -fcommon -flto -fno-fat-lto-objects #-fno-omit-frame-pointer
+OPTIONS=$(CUSTOM) $(CUSTOM_PENALTY) $(CUSTOM_CACHE) $(CUSTOM_FLIP)
+CFLAGS = -O3 -Wall -I$(IDIR) -D$(TREE_TYPE) -g -fcommon -flto -fno-fat-lto-objects $(OPTIONS) #-fno-omit-frame-pointer
 
 _DEPS = Delaunay.h GainType.h Genetic.h GeoConversion.h Hashing.h      \
         Heap.h LKH.h Segment.h Sequence.h BIT.h gpx.h

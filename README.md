@@ -17,6 +17,30 @@ __*{available soon}*__
 
 The changes introduced in this version regarded the *Penalty* function of some of the VRP variants (namely, the CVRP and CVRPTW) and the *Flip* function for asymmetric problems. 
 
+__To run the original version, comment out the first 4 lines in the *SRC/Makefile*:__
+
+	#CUSTOM=-DCAVA_CUSTOM
+	#CUSTOM_PENALTY=-DCAVA_PENALTY
+	#CUSTOM_CACHE=-DCAVA_CACHE 
+	#CUSTOM_FLIP=-DCAVA_FLIP 
+
+To activate all the implemented changes, uncomment the first line (default):
+	
+	CUSTOM=-DCAVA_CUSTOM
+
+To activate only the CVRP and CVRPTW Penalty function optimization, uncomment the second line:
+
+	CUSTOM_PENALTY=-DCAVA_PENALTY
+
+To activate only the new caching system, uncomment the third line:
+
+	CUSTOM_CACHE=-DCAVA_CACHE 
+	
+To activate only the new Flip function uncomment the fourth line and change the tree representation from TWO_LEVEL_TREE to ONE_LEVEL_TREE:
+
+	CUSTOM_FLIP=-DCAVA_FLIP 
+	TREE_TYPE = ONE_LEVEL_TREE
+
 ### CVRP and CVRPTW Penalty functions  ([commit](https://github.com/c4v4/LKH3/commit/04c636f6544a4aa6ba9ffd54797e61a5e5651503))
 
 The original penalty function, although optimized with many early-exit conditions, displays a *O(n)* time complexity (where *n* is the number of nodes in the solution). The main idea applied, has been to restrict the exploration of the TSP-tour representation to only the routes touched by the current r-opt move. 
