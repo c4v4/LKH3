@@ -3,9 +3,9 @@ CUSTOM=-DCAVA_CUSTOM # Uncomment to activate all changes
 #CUSTOM_CACHE=-DCAVA_CACHE # Uncomment to activate the cost function cache optimization
 #CUSTOM_FLIP=-DCAVA_FLIP # Uncomment to activate the one-level tree Flip function optimization (needs TREE_TYPE = ONE_LEVEL_TREE)
 
-#TREE_TYPE = TWO_LEVEL_TREE
+TREE_TYPE = TWO_LEVEL_TREE
 #TREE_TYPE = THREE_LEVEL_TREE
-TREE_TYPE = ONE_LEVEL_TREE
+#TREE_TYPE = ONE_LEVEL_TREE
 
 # CC = gcc
 IDIR = INCLUDE
