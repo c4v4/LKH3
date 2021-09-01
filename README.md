@@ -2,7 +2,7 @@
 
 Customized version of Keld Helsgaun's LKH-3 algorithm for vehicle routing problems.  
 
-__*All rights reserved to the original author.*__  
+The code is distributed for academic and non-commercial use. __*All rights reserved to the original author.*__  
 
 The original code is available [here](http://webhotel4.ruc.dk/~keld/research/LKH-3), along with a large dataset of instances for VRP problems supported by the LKH-3 algorithm.  
 
@@ -15,24 +15,24 @@ __*{available soon}*__
 
 ## Differences with the Original LKH-3
 
-The changes introduced regarded the *Penalty* function of some of the variants (namely, the CVRP and CVRPTW) and the *Flip* function for asymmetric problems. 
+The changes introduced in this version regarded the *Penalty* function of some of the VRP variants (namely, the CVRP and CVRPTW) and the *Flip* function for asymmetric problems. 
 
 ### CVRP and CVRPTW Penalty functions  ([commit](https://github.com/c4v4/LKH3/commit/04c636f6544a4aa6ba9ffd54797e61a5e5651503))
 
-The original penalty function, although optimized with many early-exit conditions, displays a O(n) time complexity (where n is the number of nodes in the solution). The main idea applied, has been to restrict the exploration of the TSP-tour representation to only the routes touched by the current r-opt move. 
+The original penalty function, although optimized with many early-exit conditions, displays a *O(n)* time complexity (where *n* is the number of nodes in the solution). The main idea applied, has been to restrict the exploration of the TSP-tour representation to only the routes touched by the current r-opt move. 
 
-In order to compute the correct penalty value, some data needs to be kept updated between calls. However, this O(n) update is needed only when an improving solution is found, which rarely happens w.r.t. the common "rejecting case", speeding-up the latter one.
+In order to compute the correct penalty value, some data needs to be kept updated between calls. However, this *O(n)* update-step is needed only when an improving solution is found, which rarely happens w.r.t. the common "rejecting case", resulting in an overall speedup.
 
-For the *Penalty* function, CVRP and CVRPTW are used as an example, however, the same techniques can be extended also to other mTSP-like problems (i.e. problems with multiple routes). 
+For the *Penalty* function, CVRP and CVRPTW are used as an example, however, the same techniques can be extended also to other problems with multiple routes. 
 ### Linear Flip ([commit](https://github.com/c4v4/LKH3/commit/532c5631440154afeb27bac66ef75cae4678af3f))
 
-For problems that are represented using the Jonker-Volgenant ATSP->TSP transformation, no actual flip can happen during the local search. Exploiting this limitation of the r-opt moves in asymmetric problems, the doubly-linked-list based Flip function can be made O(1), with the addition of a O(n) "update step" that needs to be called when an actual improvement is found (which is rare). 
+For problems that are represented using the Jonker-Volgenant ATSP->TSP transformation, no actual flip can happen during the local search. Exploiting this limitation of the r-opt moves in asymmetric problems, the doubly-linked-list based Flip function can be made *O(1)*, with, yet again, the addition of a *O(n)* update-step that needs to be called when an actual improvement is found. 
 
 Note that, switching from the two-level tree representation to the single-level one (i.e. the doubly-linked-list representation) affects the search trajectory, resulting in different solutions.
 
 ### Caching Systems 
 
-A smaller improvement has also been obtained moving the cost function "cache-check" inside a small prologue (another smaller function called before the original one), ready to be inlined by the compiler.   
+A smaller improvement has also been obtained moving the cost function cache-check inside a small prologue (another smaller function called before the original one), ready to be inlined by the compiler.   
 
 ## Benchmarks 
 
@@ -41,11 +41,11 @@ A brief set of benchmarks have been executed to test the speedup with CVRP and C
 The results are also available as a [google doc](https://docs.google.com/spreadsheets/d/1Esg-xHBSdPgNsuO5iTLkXmuDSP0oPHyUJFNkHZDvqa0/edit?usp=sharing). 
 
 For all the tests, only the time of the single *RUN* has been counted, ignoring the setup time needed by the ascent procedure to define the candidate set. 
-Moreover, in the plots that follow, the x axis displays the Customers + Vehicles sum, since inside the LKH-3 each solution is represented with a TSP-tour of such size (or twice as big for asymmetric problems).
+Moreover, in the plots that follow, the x axis displays the *Customers + Vehicles* sum, since inside the LKH-3 each solution is represented with a TSP-tour of such size (or twice as big for asymmetric problems).
 ### CVRP Speedup
 For the CVRP variant the full Uchoa dataset (containing 100 instances, from 100 to 1000 customers) along with the Belgium dataset (containing 10 instances, from 3000 to 30000 customers) have been used.  
 
-Both the original LKH-3 and the customized one have been tested with 4 different random seeds for each instance, executing a single *RUN* per seed. For the Uchoa instances, the number of *TRIALS* have been set to 10000, while, for the bigger Belgium instances, 5000 *TRIALS* have been used. 
+Both the original LKH-3 and the customized one have been tested with 4 different random seeds, executing a single *RUN* per seed. For the Uchoa instances, the number of *TRIALS* have been set to 10000, while, for the bigger Belgium instances, 5000 *TRIALS* have been used. 
 
 Speedup for Uchoa instances only:
 
@@ -57,11 +57,11 @@ Speedup for both Uchoa and Belgium instances:
 
 
 ### CVRPTW Speedup
-For the CVRPTW problem, a subset of the Homberger dataset has been selected. Sixty instances have been chosen, randomly selecting 2 instances for each class (there are 6 classes for each of the 5 different sizes). 
+For the CVRPTW problem, a subset of the Homberger dataset has been selected. A total of 60 instances have been chosen, randomly selecting 2 instances for each one the classes. In total, there are 5 sizes (200, 400, 600, 800 and 1000 customers), and 6 classes for each size.
 
-Also in this case, each configuration has been tested with 4 different random seeds, with 1 *RUN* of 10000 *TRIALS* each. 
+Also in this case, the tests have been run with 4 different random seeds, with a single *RUN* of 10000 *TRIALS* each. 
 
-In this case 3 version have been tested, namely: 
+Three version have been tested, namely: 
 
 1. **Orig:** The original LKH-3. 
 2. **Pen:** The LKH-3 with only the new Penalty and caching system (which maintain the same search trajectory w.r.t. the original). 
