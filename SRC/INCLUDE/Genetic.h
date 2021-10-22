@@ -17,15 +17,15 @@
 
 typedef void (*CrossoverFunction) ();
 
-int MaxPopulationSize; /* The maximum size of the population */ 
-int PopulationSize;    /* The current size of the population */
+extern int MaxPopulationSize; /* The maximum size of the population */ 
+extern int PopulationSize;    /* The current size of the population */
 
-CrossoverFunction Crossover;
+extern CrossoverFunction Crossover;
 
-int **Population;      /* Array of individuals (solution tours) */
-GainType *PenaltyFitness;  /* The f itnesslty  (tour penalty) of each
+extern int **Population;      /* Array of individuals (solution tours) */
+extern GainType *PenaltyFitness;  /* The f itnesslty  (tour penalty) of each
 i                             individual */
-GainType *Fitness;     /* The fitness (tour cost) of each individual */
+extern GainType *Fitness;     /* The fitness (tour cost) of each individual */
 
 void AddToPopulation(GainType Penalty, GainType Cost);
 void ApplyCrossover(int i, int j);

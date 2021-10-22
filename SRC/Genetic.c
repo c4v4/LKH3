@@ -1,5 +1,15 @@
-#include "LKH.h"
 #include "Genetic.h"
+#include "LKH.h"
+
+int MaxPopulationSize; /* The maximum size of the population */
+int PopulationSize;    /* The current size of the population */
+
+CrossoverFunction Crossover;
+
+int **Population;         /* Array of individuals (solution tours) */
+GainType *PenaltyFitness; /* The f itnesslty  (tour penalty) of each
+i                             individual */
+GainType *Fitness;        /* The fitness (tour cost) of each individual */
 
 /*
  * The AddToPopulation function adds the current tour as an individual to 
@@ -12,17 +22,19 @@ void AddToPopulation(GainType Penalty, GainType Cost)
     int i, *P;
     Node *N;
 
-    if (!Population) {
-        Population = (int **) malloc(MaxPopulationSize * sizeof(int *));
+    if (!Population)
+    {
+        Population = (int **)malloc(MaxPopulationSize * sizeof(int *));
         for (i = 0; i < MaxPopulationSize; i++)
-            Population[i] = (int *) malloc((1 + Dimension) * sizeof(int));
+            Population[i] = (int *)malloc((1 + Dimension) * sizeof(int));
         PenaltyFitness =
-           (GainType *) malloc(MaxPopulationSize * sizeof(GainType));
+            (GainType *)malloc(MaxPopulationSize * sizeof(GainType));
         Fitness =
-           (GainType *) malloc(MaxPopulationSize * sizeof(GainType));
+            (GainType *)malloc(MaxPopulationSize * sizeof(GainType));
     }
     for (i = PopulationSize;
-         i >= 1 && SmallerFitness(Penalty, Cost, i - 1); i--) {
+         i >= 1 && SmallerFitness(Penalty, Cost, i - 1); i--)
+    {
         PenaltyFitness[i] = PenaltyFitness[i - 1];
         Fitness[i] = Fitness[i - 1];
         P = Population[i];
@@ -52,7 +64,8 @@ void ApplyCrossover(int i, int j)
 
     Pi = Population[i];
     Pj = Population[j];
-    for (k = 1; k <= Dimension; k++) {
+    for (k = 1; k <= Dimension; k++)
+    {
         NodeSet[Pi[k - 1]].Suc = &NodeSet[Pi[k]];
         NodeSet[Pj[k - 1]].Next = &NodeSet[Pj[k]];
     }
@@ -64,7 +77,11 @@ void ApplyCrossover(int i, int j)
         SOP_RepairTour();
 }
 
-#define Free(s) { free(s); s = 0; }
+#define Free(s)  \
+    {            \
+        free(s); \
+        s = 0;   \
+    }
 
 /*
  * The FreePopulation function frees the memory space allocated to the 
@@ -73,7 +90,8 @@ void ApplyCrossover(int i, int j)
 
 void FreePopulation()
 {
-    if (Population) {
+    if (Population)
+    {
         int i;
         for (i = 0; i < MaxPopulationSize; i++)
             Free(Population[i]);
@@ -95,7 +113,8 @@ void FreePopulation()
 int HasFitness(GainType Penalty, GainType Cost)
 {
     int Low = 0, High = PopulationSize - 1;
-    while (Low < High) {
+    while (Low < High)
+    {
         int Mid = (Low + High) / 2;
         if (LargerFitness(Penalty, Cost, Mid))
             Low = Mid + 1;
@@ -103,7 +122,7 @@ int HasFitness(GainType Penalty, GainType Cost)
             High = Mid;
     }
     return High >= 0 && PenaltyFitness[High] == Penalty &&
-        Fitness[High] == Cost;
+           Fitness[High] == Cost;
 }
 
 /*
@@ -113,7 +132,7 @@ int HasFitness(GainType Penalty, GainType Cost)
 
 static double Random01()
 {
-    return ((double) Random()) / INT_MAX;
+    return ((double)Random()) / INT_MAX;
 }
 
 /*
@@ -131,10 +150,10 @@ static double Random01()
 
 int LinearSelection(int Size, double Bias)
 {
-    return (int) (Size *
-                  (Bias -
-                   sqrt((Bias * Bias - 4 * (Bias - 1) * Random01()))) /
-                  2 / (Bias - 1));
+    return (int)(Size *
+                 (Bias -
+                  sqrt((Bias * Bias - 4 * (Bias - 1) * Random01()))) /
+                 2 / (Bias - 1));
 }
 
 /*
@@ -164,21 +183,23 @@ void PrintPopulation()
 {
     int i;
     printff("Population:\n");
-    for (i = 0; i < PopulationSize; i++) {
+    for (i = 0; i < PopulationSize; i++)
+    {
         printff("%3d: ", i + 1);
         if (Penalty)
             printff(GainFormat "_" GainFormat,
                     PenaltyFitness[i], Fitness[i]);
         else
             printff(GainFormat, Fitness[i]);
-         if (Optimum != MINUS_INFINITY && Optimum != 0) {
-             if (ProblemType != CCVRP && ProblemType != TRP &&
-                 ProblemType != MLP &&
-                 MTSPObjective != MINMAX &&
-                 MTSPObjective != MINMAX_SIZE) 
-                 printff(", Gap = %0.4f%%",
+        if (Optimum != MINUS_INFINITY && Optimum != 0)
+        {
+            if (ProblemType != CCVRP && ProblemType != TRP &&
+                ProblemType != MLP &&
+                MTSPObjective != MINMAX &&
+                MTSPObjective != MINMAX_SIZE)
+                printff(", Gap = %0.4f%%",
                         100.0 * (Fitness[i] - Optimum) / Optimum);
-             else
+            else
                 printff(", Gap = %0.4f%%",
                         100.0 * (PenaltyFitness[i] - Optimum) / Optimum);
         }
@@ -202,12 +223,14 @@ void ReplaceIndividualWithTour(int i, GainType Penalty, GainType Cost)
     Fitness[i] = Cost;
     P = Population[i];
     N = FirstNode;
-    for (j = 1; j <= Dimension; j++) {
+    for (j = 1; j <= Dimension; j++)
+    {
         P[j] = N->Id;
         N = N->Suc;
     }
     P[0] = P[Dimension];
-    while (i >= 1 && SmallerFitness(Penalty, Cost, i - 1)) {
+    while (i >= 1 && SmallerFitness(Penalty, Cost, i - 1))
+    {
         PenaltyFitness[i] = PenaltyFitness[i - 1];
         Fitness[i] = Fitness[i - 1];
         Population[i] = Population[i - 1];
@@ -216,7 +239,8 @@ void ReplaceIndividualWithTour(int i, GainType Penalty, GainType Cost)
     PenaltyFitness[i] = Cost;
     Fitness[i] = Cost;
     Population[i] = P;
-    while (i < PopulationSize - 1 && LargerFitness(Penalty, Cost, i + 1)) {
+    while (i < PopulationSize - 1 && LargerFitness(Penalty, Cost, i + 1))
+    {
         PenaltyFitness[i] = PenaltyFitness[i + 1];
         Fitness[i] = Fitness[i + 1];
         Population[i] = Population[i + 1];
@@ -237,7 +261,8 @@ static int DistanceToIndividual(int i)
     int Count = 0, j, *P = Population[i];
     Node *N;
 
-    for (j = 0; j < Dimension; j++) {
+    for (j = 0; j < Dimension; j++)
+    {
         N = &NodeSet[P[j]];
         (N->Next = &NodeSet[P[j + 1]])->Prev = N;
     }
@@ -265,10 +290,13 @@ int ReplacementIndividual(GainType Penalty, GainType Cost)
     int i, j, d, *P;
     int MinDist = INT_MAX, CMin = PopulationSize - 1;
     Node *N = FirstNode;
-    while ((N = N->OldSuc = N->Suc) != FirstNode);
+    while ((N = N->OldSuc = N->Suc) != FirstNode)
+        ;
     for (i = PopulationSize - 1;
-         i >= 0 && SmallerFitness(Penalty, Cost, i); i--) {
-        if ((d = DistanceToIndividual(i)) < MinDist) {
+         i >= 0 && SmallerFitness(Penalty, Cost, i); i--)
+    {
+        if ((d = DistanceToIndividual(i)) < MinDist)
+        {
             CMin = i;
             MinDist = d;
         }

@@ -10,16 +10,16 @@
 
 #include "LKH.h"
 
-Node **t;       /* The sequence of nodes to be used in a move */
-Node **T;       /* The currently best t's */
-Node **tSaved;  /* For saving t when using the BacktrackKOptMove function */
-int *p;         /* The permutation corresponding to the sequence in which
-                   the t's occur on the tour */
-int *q;         /* The inverse permutation of p */
-int *incl;      /* Array: incl[i] == j, if (t[i], t[j]) is an inclusion edge */
-int *cycle;     /* Array: cycle[i] is cycle number of t[i] */
-GainType *G;    /* For storing the G-values in the BestKOptMove function */
-int K;          /* The value K for the current K-opt move */
+extern Node **t;       /* The sequence of nodes to be used in a move */
+extern Node **T;       /* The currently best t's */
+extern Node **tSaved;  /* For saving t when using the BacktrackKOptMove function */
+extern int *p;         /* The permutation corresponding to the sequence in which
+                          the t's occur on the tour */
+extern int *q;         /* The inverse permutation of p */
+extern int *incl;      /* Array: incl[i] == j, if (t[i], t[j]) is an inclusion edge */
+extern int *cycle;     /* Array: cycle[i] is cycle number of t[i] */
+extern GainType *G;    /* For storing the G-values in the BestKOptMove function */
+extern int K;          /* The value K for the current K-opt move */
 
 int FeasibleKOptMove(int k);
 void FindPermutation(int k);

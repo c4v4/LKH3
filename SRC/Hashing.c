@@ -1,4 +1,16 @@
 #include "Hashing.h"
+#include "LKH.h"
+
+Node **t;      /* The sequence of nodes to be used in a move */
+Node **T;      /* The currently best t's */
+Node **tSaved; /* For saving t when using the BacktrackKOptMove function */
+int *p;        /* The permutation corresponding to the sequence in which
+                   the t's occur on the tour */
+int *q;        /* The inverse permutation of p */
+int *incl;     /* Array: incl[i] == j, if (t[i], t[j]) is an inclusion edge */
+int *cycle;    /* Array: cycle[i] is cycle number of t[i] */
+GainType *G;   /* For storing the G-values in the BestKOptMove function */
+int K;         /* The value K for the current K-opt move */
 
 /*
  * The functions HashInitialize, HashInsert and HashSearch is used
@@ -15,11 +27,12 @@
  * Empty entries have Cost equal to MINUS_INFINITY. 
  */
 
-void HashInitialize(HashTable * T)
+void HashInitialize(HashTable *T)
 {
     int i;
 
-    for (i = 0; i < HashTableSize; i++) {
+    for (i = 0; i < HashTableSize; i++)
+    {
         T->Entry[i].Hash = UINT_MAX;
         T->Entry[i].Cost = MINUS_INFINITY;
     }
@@ -39,13 +52,16 @@ void HashInitialize(HashTable * T)
  * value.      
  */
 
-void HashInsert(HashTable * T, unsigned Hash, GainType Cost)
+void HashInsert(HashTable *T, unsigned Hash, GainType Cost)
 {
     int i = Hash % HashTableSize;
-    if (T->Count >= MaxLoadFactor * HashTableSize) {
+    if (T->Count >= MaxLoadFactor * HashTableSize)
+    {
         if (Cost > T->Entry[i].Cost)
             return;
-    } else {
+    }
+    else
+    {
         int p = Hash % 97 + 1;
         while (T->Entry[i].Cost != MINUS_INFINITY)
             if ((i -= p) < 0)
@@ -61,14 +77,13 @@ void HashInsert(HashTable * T, unsigned Hash, GainType Cost)
  * Cost and H. Otherwise, the function returns 0.
  */
 
-int HashSearch(HashTable * T, unsigned Hash, GainType Cost)
+int HashSearch(HashTable *T, unsigned Hash, GainType Cost)
 {
     int i, p;
 
     i = Hash % HashTableSize;
     p = Hash % 97 + 1;
-    while ((T->Entry[i].Hash != Hash || T->Entry[i].Cost != Cost)
-           && T->Entry[i].Cost != MINUS_INFINITY)
+    while ((T->Entry[i].Hash != Hash || T->Entry[i].Cost != Cost) && T->Entry[i].Cost != MINUS_INFINITY)
         if ((i -= p) < 0)
             i += HashTableSize;
     return T->Entry[i].Hash == Hash;

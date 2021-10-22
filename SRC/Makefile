@@ -1,4 +1,4 @@
-CUSTOM=-DCAVA_CUSTOM # Uncomment to activate all changes
+#CUSTOM=-DCAVA_CUSTOM # Uncomment to activate all changes
 #CUSTOM_PENALTY=-DCAVA_PENALTY # Uncomment to activate CVRP and CVRPTW penalty optimization
 #CUSTOM_CACHE=-DCAVA_CACHE # Uncomment to activate the cost function cache optimization
 #CUSTOM_FLIP=-DCAVA_FLIP # Uncomment to activate the one-level tree Flip function optimization (needs TREE_TYPE = ONE_LEVEL_TREE)
@@ -11,7 +11,7 @@ TREE_TYPE = TWO_LEVEL_TREE
 IDIR = INCLUDE
 ODIR = OBJ
 OPTIONS=$(CUSTOM) $(CUSTOM_PENALTY) $(CUSTOM_CACHE) $(CUSTOM_FLIP)
-CFLAGS = -O3 -Wall -I$(IDIR) -D$(TREE_TYPE) -g -fcommon -flto -fno-fat-lto-objects $(OPTIONS) #-fno-omit-frame-pointer
+CFLAGS = -O3 -Wall -I$(IDIR) -D$(TREE_TYPE) -g -flto -fno-fat-lto-objects $(OPTIONS) #-fno-omit-frame-pointer
 
 _DEPS = Delaunay.h GainType.h Genetic.h GeoConversion.h Hashing.h      \
         Heap.h LKH.h Segment.h Sequence.h BIT.h gpx.h
@@ -37,7 +37,7 @@ _OBJ = Activate.o AddCandidate.o AddExtraCandidates.o                  \
        GeoConversion.o GetTime.o GreedyTour.o Hashing.o Heap.o         \
        Improvement.o IsBackboneCandidate.o IsCandidate.o               \
        IsCommonEdge.o IsPossibleCandidate.o KSwapKick.o LinKernighan.o \
-       LKHmain.o                                                       \
+       LKHmain.o LKH.o                                                 \
        Make2OptMove.o Make3OptMove.o Make4OptMove.o Make5OptMove.o     \
        MakeKOptMove.o MergeTourWithBestTour.o MergeWithTourIPT.o       \
        Minimum1TreeCost.o MinimumSpanningTree.o                        \
