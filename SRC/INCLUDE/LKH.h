@@ -739,7 +739,7 @@ void WriteTour(char *FileName, int *Tour, GainType Cost);
 #ifdef CAVA_CACHE
 
 /* Caches are checked before anything else (to improve cache-friendliness and avoid multiple cache miss)*/
-CostFunction _C;
+extern CostFunction _C;
 static inline int C(Node *Na, Node *Nb)
 {
     if (CacheSig)
@@ -779,8 +779,8 @@ typedef struct _RouteData
     Node *minNode;
 } RouteData;
 
-RouteData *cava_PetalsData;
-Node **cava_NodeCache;
+extern RouteData *cava_PetalsData;
+extern Node **cava_NodeCache;
 
 #endif
 

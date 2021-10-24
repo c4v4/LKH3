@@ -1,4 +1,4 @@
-#CUSTOM=-DCAVA_CUSTOM # Uncomment to activate all changes
+CUSTOM=-DCAVA_CUSTOM # Uncomment to activate all changes
 #CUSTOM_PENALTY=-DCAVA_PENALTY # Uncomment to activate CVRP and CVRPTW penalty optimization
 #CUSTOM_CACHE=-DCAVA_CACHE # Uncomment to activate the cost function cache optimization
 #CUSTOM_FLIP=-DCAVA_FLIP # Uncomment to activate the one-level tree Flip function optimization (needs TREE_TYPE = ONE_LEVEL_TREE)
