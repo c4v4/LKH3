@@ -62,7 +62,7 @@ static int was_empty_route(Node *, Node *); /* Used to test *only once* if a rem
                                                 flags is reseted (To avoid counting multiple times the same route).*/
 
 #ifdef REDUNDANT_CHECK
-GainType Penalty_CVRP_();
+static GainType Penalty_CVRP_();
 GainType Penalty_CVRP()
 {
     assert(CurrentPenalty >= 0);
@@ -187,7 +187,7 @@ static int setup_Penalty_CVRP()
                 (!ARE_LINKED(t3, t4) && was_empty_route(t3, t4)))
             {
                 ++petalCounter;
-                oldPenaltySum += MTSPMinSize > 0;
+                oldPenaltySum += MTSPMinSize;
             }
             petalCounter += setup_Node_CVRP(t1) + setup_Node_CVRP(t2) +
                             setup_Node_CVRP(t3) + setup_Node_CVRP(t4);
