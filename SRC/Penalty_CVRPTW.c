@@ -57,6 +57,7 @@
  * Node::prevPenalty fileds of each node of the route need to be updated.
  */
 
+//#define REDUNDANT_CHECK /* ONLY DEBUG: checks old and new and assert they are the same. */
 #ifdef CAVA_PENALTY
 
 GainType Penalty_CVRPTW_Old();
@@ -66,17 +67,35 @@ static Node *setup_node_CVRPTW(Node *N);
 static void route_min_node_update(Node *t);
 static void update_Penalty_CVRPTW();
 
-GainType Penalty_CVRPTW() {
+#ifdef REDUNDANT_CHECK
+GainType Penalty_CVRPTW_();
+GainType Penalty_CVRPTW()
+{
+    GainType P1 = Penalty_CVRPTW_();
+    GainType P2 = Penalty_CVRPTW_Old();
+    int accepted1 = P1 < CurrentPenalty || (P1 == CurrentPenalty && CurrentGain > 0);
+    int accepted2 = P2 < CurrentPenalty || (P2 == CurrentPenalty && CurrentGain > 0);
+    assert(accepted1 == accepted2);
+    return P1;
+}
+
+GainType Penalty_CVRPTW_()
+#else
+GainType Penalty_CVRPTW()
+#endif
+{
     GainType DemandSum, CostSum, P = 0, petalP;
     Node *N, *NextN;
-    int NC_idx;
+    int NC_idx, Size;
     int Forward = SUCC(Depot)->Id != Depot->Id + DimensionSaved;
 
-    if (Swaps && cava_PetalsData) {
+    if (Swaps && cava_PetalsData)
+    {
 
         NC_idx = setup_Penalty_CVRPTW();
 
-        while (NC_idx) {
+        while (NC_idx)
+        {
 
             RouteData *petal = cava_NodeCache[--NC_idx]->PetalId;
 
@@ -85,10 +104,13 @@ GainType Penalty_CVRPTW() {
             if (N->Id > DimensionSaved)
                 N -= DimensionSaved;
 
+            Size = N->PetalRank - 1;
             CostSum = N->prevCostSum;
             DemandSum = N->prevDemandSum;
             petalP = N->prevPenalty;
-            do {
+            do
+            {
+                ++Size;
                 if ((DemandSum += N->Demand) > Capacity)
                     petalP += DemandSum - Capacity;
                 if (CostSum < N->Earliest)
@@ -96,7 +118,7 @@ GainType Penalty_CVRPTW() {
                 if (CostSum > N->Latest)
                     petalP += CostSum - N->Latest;
                 if ((P + petalP) > oldPenaltySum ||
-                    ((P + petalP) == oldPenaltySum && CurrentGain <= 0)) 
+                    ((P + petalP) == oldPenaltySum && CurrentGain <= 0))
                     return CurrentPenalty + (CurrentGain > 0);
 
                 CostSum += N->ServiceTime;
@@ -110,11 +132,14 @@ GainType Penalty_CVRPTW() {
                 N = (Forward ? SUC(NextN) : PRED(NextN));
             } while (N->DepotId == 0);
 
+            if (Size < MTSPMinSize)
+                petalP += MTSPMinSize - Size;
+
             if (CostSum > Depot->Latest)
                 petalP += CostSum - Depot->Latest;
 
             if ((P + petalP > oldPenaltySum ||
-                 (P + petalP == oldPenaltySum && CurrentGain <= 0))) 
+                 (P + petalP == oldPenaltySum && CurrentGain <= 0)))
                 return CurrentPenalty + (CurrentGain > 0);
 
             P += petalP;
@@ -122,15 +147,17 @@ GainType Penalty_CVRPTW() {
         }
 
         if (!CurrentPenalty || P < oldPenaltySum ||
-            (P == oldPenaltySum && CurrentGain > 0)) {
-            
+            (P == oldPenaltySum && CurrentGain > 0))
+        {
+
             update_Penalty_CVRPTW();
             return CurrentPenalty + P - oldPenaltySum;
-
-        } else 
+        }
+        else
             return CurrentPenalty + (CurrentGain > 0);
-
-    } else {
+    }
+    else
+    {
 
         if (!cava_NodeCache)
             cava_NodeCache = (Node **)calloc(Salesmen + 1, sizeof(Node *));
@@ -146,17 +173,20 @@ GainType Penalty_CVRPTW() {
     }
 }
 
-int setup_Penalty_CVRPTW() {
+int setup_Penalty_CVRPTW()
+{
     Node *N;
     int touched_routes = 0;
     oldPenaltySum = 0;
 
-    for (SwapRecord *s = SwapStack + Swaps - 1; s >= SwapStack; --s) {
+    for (SwapRecord *s = SwapStack + Swaps - 1; s >= SwapStack; --s)
+    {
         s->t1->PetalId->flag = s->t4->PetalId->flag = 0;
         s->t1->PetalId->minNode = s->t4->PetalId->minNode = NULL;
     }
 
-    for (SwapRecord *s = SwapStack + Swaps - 1; s >= SwapStack; --s) {
+    for (SwapRecord *s = SwapStack + Swaps - 1; s >= SwapStack; --s)
+    {
 
         if ((N = setup_node_CVRPTW(s->t1)) != NULL)
             cava_NodeCache[touched_routes++] = N;
@@ -175,14 +205,17 @@ int setup_Penalty_CVRPTW() {
     return touched_routes;
 }
 
-void route_min_node_update(Node *t) {
+void route_min_node_update(Node *t)
+{
     if (!t->PetalId->minNode || t->PetalId->minNode->PetalRank > t->PetalRank)
         t->PetalId->minNode = t;
 }
 
-Node *setup_node_CVRPTW(Node *N) {
+Node *setup_node_CVRPTW(Node *N)
+{
 
-    if (!N->PetalId->flag) {
+    if (!N->PetalId->flag)
+    {
         oldPenaltySum += N->PetalId->OldPenalty;
         N->PetalId->flag = 1;
         int DepotId = N->PetalId - cava_PetalsData;
@@ -193,13 +226,14 @@ Node *setup_node_CVRPTW(Node *N) {
     return NULL;
 }
 
-
-void update_Penalty_CVRPTW() {
+void update_Penalty_CVRPTW()
+{
     Node *N, *NextN;
     GainType DemandSum, CostSum, petalP;
     int Forward = SUCC(Depot)->Id != Depot->Id + DimensionSaved;
 
-    for (Node **CN = cava_NodeCache; *CN; ++CN) {
+    for (Node **CN = cava_NodeCache; *CN; ++CN)
+    {
 
         N = *CN;
         if (N->Id > DimensionSaved)
@@ -210,7 +244,8 @@ void update_Penalty_CVRPTW() {
 
         DemandSum = CostSum = petalP = 0;
         int PetalRank = 0;
-        do {
+        do
+        {
             NextN = Forward ? SUCC(N) : PREDD(N);
 
             N->PetalId = NextN->PetalId = CurrId;
@@ -236,23 +271,29 @@ void update_Penalty_CVRPTW() {
     }
 }
 
-GainType Penalty_CVRPTW_Old() {
+GainType Penalty_CVRPTW_Old()
+{
     static _Thread_local Node *StartRoute = 0;
     Node *N, *NextN, *CurrentRoute;
     GainType CostSum, DemandSum, P = 0, petalP;
     int Forward = SUCC(Depot)->Id != Depot->Id + DimensionSaved;
-    int cache_index = 0;
+    int cache_index = 0, Size;
 
     if (!StartRoute)
         StartRoute = Depot;
     if (StartRoute->Id > DimensionSaved)
         StartRoute -= DimensionSaved;
     N = StartRoute;
-    do {
+    do
+    {
         cava_NodeCache[cache_index++] = CurrentRoute = N;
         CostSum = DemandSum = petalP = 0;
-        do {
-            if (N->Id <= Dim && N != Depot) {
+        Size = -1; /* Account for depot */
+        do
+        {
+            ++Size;
+            if (N->Id <= Dim && N != Depot)
+            {
                 if ((DemandSum += N->Demand) > Capacity)
                     petalP += DemandSum - Capacity;
                 if (CostSum < N->Earliest)
@@ -260,7 +301,8 @@ GainType Penalty_CVRPTW_Old() {
                 if (CostSum > N->Latest)
                     petalP += CostSum - N->Latest;
                 if ((P + petalP) > CurrentPenalty ||
-                    ((P + petalP) == CurrentPenalty && CurrentGain <= 0)) {
+                    ((P + petalP) == CurrentPenalty && CurrentGain <= 0))
+                {
                     StartRoute = CurrentRoute;
                     return CurrentPenalty + (CurrentGain > 0);
                 }
@@ -270,9 +312,12 @@ GainType Penalty_CVRPTW_Old() {
             CostSum += (C(N, NextN) - N->Pi - NextN->Pi) / Precision;
             N = Forward ? SUCC(NextN) : PREDD(NextN);
         } while (N->DepotId == 0);
+        if (Size < MTSPMinSize)
+            petalP += MTSPMinSize - Size;
         if (CostSum > Depot->Latest &&
             ((P + (petalP += CostSum - Depot->Latest)) > CurrentPenalty ||
-             ((P + petalP) == CurrentPenalty && CurrentGain <= 0))) {
+             ((P + petalP) == CurrentPenalty && CurrentGain <= 0)))
+        {
             StartRoute = CurrentRoute;
             return CurrentPenalty + (CurrentGain > 0);
         }
@@ -285,22 +330,29 @@ GainType Penalty_CVRPTW_Old() {
 
 #else
 
-GainType Penalty_CVRPTW() {
+GainType Penalty_CVRPTW()
+{
     static _Thread_local Node *StartRoute = 0;
     Node *N, *NextN, *CurrentRoute;
     GainType CostSum, DemandSum, P = 0;
     int Forward = SUCC(Depot)->Id != Depot->Id + DimensionSaved;
+    int Size;
 
     if (!StartRoute)
         StartRoute = Depot;
     if (StartRoute->Id > DimensionSaved)
         StartRoute -= DimensionSaved;
     N = StartRoute;
-    do {
+    do
+    {
         CurrentRoute = N;
         CostSum = DemandSum = 0;
-        do {
-            if (N->Id <= Dim && N != Depot) {
+        Size = -1;
+        do
+        {
+            ++Size;
+            if (N->Id <= Dim && N != Depot)
+            {
                 if ((DemandSum += N->Demand) > Capacity)
                     P += DemandSum - Capacity;
                 if (CostSum < N->Earliest)
@@ -308,7 +360,8 @@ GainType Penalty_CVRPTW() {
                 if (CostSum > N->Latest)
                     P += CostSum - N->Latest;
                 if (P > CurrentPenalty ||
-                    (P == CurrentPenalty && CurrentGain <= 0)) {
+                    (P == CurrentPenalty && CurrentGain <= 0))
+                {
                     StartRoute = CurrentRoute;
                     return CurrentPenalty + (CurrentGain > 0);
                 }
@@ -319,9 +372,12 @@ GainType Penalty_CVRPTW() {
             CostSum += (C(N, NextN) - N->Pi - NextN->Pi) / Precision;
             N = Forward ? SUCC(NextN) : PREDD(NextN);
         } while (N->DepotId == 0);
+        if (Size < MTSPMinSize)
+            petalP += MTSPMinSize - Size;
         if (CostSum > Depot->Latest &&
             ((P += CostSum - Depot->Latest) > CurrentPenalty ||
-             (P == CurrentPenalty && CurrentGain <= 0))) {
+             (P == CurrentPenalty && CurrentGain <= 0)))
+        {
             StartRoute = CurrentRoute;
             return CurrentPenalty + (CurrentGain > 0);
         }

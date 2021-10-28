@@ -776,7 +776,16 @@ typedef struct _RouteData
     int flag;
     GainType OldPenalty;
     GainType CandPenalty;
-    Node *minNode;
+    Node *minNode; /* In CVRP it's used to detect empty routes. 
+                    The depot at the other side of the empty 
+                    route is stored here. In this way, given 
+                    any swap we are able to say if it removes 
+                    an pre-existing empty route, or one that 
+                    has been created by a swapt of the same
+                    swap-stack (in the latter case it does not 
+                    need to be counted).  In CVRPTW it contains 
+                    the "warmstart node" from which we can start.*/
+
 } RouteData;
 
 extern RouteData *cava_PetalsData;

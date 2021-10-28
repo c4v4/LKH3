@@ -11,7 +11,7 @@ TREE_TYPE = TWO_LEVEL_TREE
 IDIR = INCLUDE
 ODIR = OBJ
 OPTIONS=$(CUSTOM) $(CUSTOM_PENALTY) $(CUSTOM_CACHE) $(CUSTOM_FLIP)
-CFLAGS = -O3 -Wall -I$(IDIR) -D$(TREE_TYPE) -g -flto -fno-fat-lto-objects $(OPTIONS) #-fno-omit-frame-pointer
+CFLAGS = -O3 -Wall -I$(IDIR) -D$(TREE_TYPE) -flto $(OPTIONS) #-O0 -g -fno-omit-frame-pointer
 
 _DEPS = Delaunay.h GainType.h Genetic.h GeoConversion.h Hashing.h      \
         Heap.h LKH.h Segment.h Sequence.h BIT.h gpx.h
