@@ -1,4 +1,6 @@
 # LKH-3.c4v4 
+[![DOI](https://zenodo.org/badge/400224160.svg)](https://zenodo.org/badge/latestdoi/400224160)
+
 
 Customized version of Keld Helsgaun's LKH-3 algorithm for vehicle routing problems.  
 
