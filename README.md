@@ -10,8 +10,9 @@ The original code is available [here](http://webhotel4.ruc.dk/~keld/research/LKH
 
 The aim of this project is to propose some (hopefully useful) performance improvements for the LKH-3 in terms of computing efficiency, maintaining, when possible, the search trajectory with respect to the original code.   
 
-*Part of the development has been carried out during the work for the Set-Partitioning based Local-Search heuristic realized in joint work with Emilio Bendotti and Matteo Fischetti:* 
-__*{available soon}*__
+*Part of the development has been carried out during the work for the Set-Partitioning based Local-Search heuristic presented in:* 
+
+Cavaliere, Francesco, Emilio Bendotti, and Matteo Fischetti. "An integrated local-search/set-partitioning refinement heuristic for the capacitated vehicle routing problem." Mathematical Programming Computation 14.4 (2022): 749-779.
 
 ---
 
